@@ -1,0 +1,10 @@
+Knife, A sharp kitchen knife with a wooden handle, true
+Switch blase, A small pocket knife, true
+Rounders Bat, A light wooden rounders bat, true
+Piano Wire, Wire from a piano, true
+Photo Copier, A machine that makes copies, false
+Plastic Bag, A small bag for life, true
+Bleach, A bottle of toxic bleach, true
+Screwdrive, a sharp small screwdriver, true
+Cork Screw, A small sharp tool for opening bottles, true
+Pen, a black ball-point pen, true
