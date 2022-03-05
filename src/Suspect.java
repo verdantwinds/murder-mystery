@@ -26,7 +26,7 @@ public class Suspect extends Person {
                 box.enterText("oooooooooggggh my name is jon lewis i love the weather");
                 break;
             case "Özgür Akgün":
-                box.enterText("hello i am oz ");
+                box.enterText("wagwan i am oz ");
                 break;
             case "Ruth Hoffmann":
                 box.enterText("hi, it's ruth");
