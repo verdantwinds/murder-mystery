@@ -19,7 +19,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
     public GameBoard() {
         setBorder(COMPOUND_BORDER);
-        setSize(1200,800);
+        setSize(1200,1000);
         addKeyListener(new MoveAdapter());
         setFocusable(true);
         setBackground(Color.WHITE);
@@ -29,7 +29,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
         doors = new ArrayList<>();
 
-        this.room = Room.PARK;
+        this.room = Room.LABS;
 
         room.roomDesc(Test.box);
         doors.add(new Door(1100,0, Room.BEACH));
@@ -55,7 +55,7 @@ public class GameBoard extends JPanel implements ActionListener {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
 
-        g2d.drawImage(room.getImage(),0,0 ,this);
+        g2d.drawImage(room.getImage(),0,0 , 1200,890,this);
 
         if(room.getSuspects() != null) {
             for (Suspect s : room.getSuspects()) {
@@ -64,6 +64,13 @@ public class GameBoard extends JPanel implements ActionListener {
 
             }
         }
+
+        if(room.getInventory() != null){
+            for(Item i: room.getInventory()) {
+                g2d.drawImage(i.getImage(),i.getX(),i.getY(),this);
+            }
+        }
+
 
         for (Door d : doors) {
             g2d.drawImage(d.getImage(), d.getX(), d.getY(), this);

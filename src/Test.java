@@ -13,6 +13,7 @@ public class Test extends JFrame {
 //        JPanel main = new JPanel(new GridBagLayout());
 //        main.setBackground(Color.gray);
 //
+        setSize(1200, 1000);
         box = new GuiDialogueBox();
         JPanel main = new JPanel(new GridBagLayout());
         main.setSize(1200,1000);
@@ -22,21 +23,21 @@ public class Test extends JFrame {
         c.gridx=0;c.gridy=0;
         c.weightx=1;c.weighty=1;
         c.anchor = GridBagConstraints.CENTER;
-        c.insets = new Insets(-10,0,0,0);
+        c.insets = new Insets(0,0,0,0);
         c.fill = GridBagConstraints.BOTH;
         //setLayout(new GridLayout(2,1));
         main.add(new GameBoard(),c);
-        c.gridx=0;c.gridy=1;
+        c.gridx=0;c.gridy=2;
         c.weightx=1;c.weighty=0;
         c.anchor = GridBagConstraints.SOUTH;
-        c.insets = new Insets(-10,0,0,0);
+        c.insets = new Insets(-5,0,0,0);
         c.fill = GridBagConstraints.BOTH;
         main.add(box,c);
 //
         add(main);
 //        add(new GameBoard());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1200, 1000);
+
         setLocationRelativeTo(null);
         setTitle("Test Movement");
         setResizable(false);
