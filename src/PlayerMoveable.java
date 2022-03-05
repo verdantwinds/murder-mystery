@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class PlayerMoveable {
+public class PlayerMoveable implements IWorldObject {
 
     private int dx;
     private int dy;
@@ -12,10 +12,12 @@ public class PlayerMoveable {
     private Image image;
     private GameBoard board;
     private ArrayList<Door> currentDoors;
+    private final int height = 100;
+    private final int width = 100;
 
     public PlayerMoveable(GameBoard board) {
         ImageIcon ii = new ImageIcon("test.png");
-        image = ii.getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH);
+        image = ii.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
         x = 40;
         y = 60;
         this.board = board;
@@ -23,7 +25,11 @@ public class PlayerMoveable {
 
 
     public void move() {
+        if (board.getRoom().checkAllCollisions(this)) {
+            return;
+        }
         if(x+dx <= 1100 & x+dx >= 0) {
+
             x += dx;
         }
         if(y+dy <= 875 & y+dy >= 0) {
@@ -102,5 +108,24 @@ public class PlayerMoveable {
         if (key == KeyEvent.VK_DOWN|| key == KeyEvent.VK_S ) {
             dy = 0;
         }
+    }
+
+    @Override
+    public boolean isSolid() {
+        return true;
+    }
+
+    @Override
+    public int[] getSize() {
+        return new int[]{width, height};
+    }
+
+    /**
+     * Retrieve the position of the object with x, y coordinates
+     * Includes the delta, so that it can be applied prior to moves.
+     */
+    @Override
+    public int[] getPosition() {
+        return new int[]{x + dx, y + dy};
     }
 }

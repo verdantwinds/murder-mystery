@@ -12,6 +12,7 @@ public class GameBoard extends JPanel implements ActionListener {
     private PlayerMoveable player;
     private ArrayList<Door> doors;
     private Room room;
+    private static final boolean DISPLAY_HITBOXES = false;
 
     public GameBoard() {
 
@@ -56,6 +57,12 @@ public class GameBoard extends JPanel implements ActionListener {
             for (Suspect s : room.getSuspects()) {
                 g2d.drawImage(s.getImage(), s.getX(), s.getY(), this);
 
+                if (DISPLAY_HITBOXES) {
+                    int[] midpoint = Collision.getMidpoint(s);
+                    g2d.drawRect(midpoint[0] - 2, midpoint[1] - 2, 4, 4);
+                    g2d.drawRect(s.getX(), s.getY(), s.getSize()[0], s.getSize()[1]);
+                }
+
             }
         }
 
@@ -64,6 +71,13 @@ public class GameBoard extends JPanel implements ActionListener {
         }
 
         g2d.drawImage(player.getImage(), player.getX(), player.getY(), this);
+
+        if (DISPLAY_HITBOXES) {
+            int[] midpoint = Collision.getMidpoint(player);
+            g2d.drawRect(midpoint[0] - 2, midpoint[1] - 2, 4, 4);
+            g2d.drawRect(player.getX(), player.getY(), player.getSize()[0], player.getSize()[1]);
+        }
+
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();

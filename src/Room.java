@@ -11,6 +11,10 @@ public class Room {
     private String name;
     private String description;
     private ArrayList<Item> inventory;
+
+    // Other objects, like walls.
+    private ArrayList<IWorldObject> objects = new ArrayList<>();
+
     private Suspect[] suspects;
     private Image image;
 
@@ -65,5 +69,31 @@ public class Room {
         temp = inventory.get(inventory.indexOf(item));
         inventory.remove(item);
         return temp;
+    }
+
+    // Checks if a given object collides with anything in the room
+    public boolean checkAllCollisions(IWorldObject target) {
+        for (IWorldObject obj : suspects) {
+            if (check(target, obj)) {
+                 return true;
+            }
+        }
+
+        for (IWorldObject obj : objects) {
+            if (check(target, obj)) {
+                return true;
+            }
+        }
+        for (IWorldObject obj : inventory) {
+            if (check(target, obj)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean check (IWorldObject one, IWorldObject two) {
+        return Collision.objectsOverlap(one, two) && one.isSolid() && two.isSolid();
     }
 }
