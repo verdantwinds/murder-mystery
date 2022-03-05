@@ -21,7 +21,7 @@ public class PlayerMoveable implements IWorldObject {
     public PlayerMoveable(GameBoard board) {
         ImageIcon ii = new ImageIcon("assets/test.png");
         image = ii.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
-        x = 40;
+        x = 20;
         y = 60;
         inventory = new ArrayList<>();
         this.board = board;

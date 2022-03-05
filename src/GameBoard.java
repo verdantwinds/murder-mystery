@@ -15,7 +15,7 @@ public class GameBoard extends JPanel implements ActionListener {
     private PlayerMoveable player;
     private ArrayList<Door> doors;
     private Room room;
-    private static final boolean DISPLAY_HITBOXES = false;
+    private static final boolean DISPLAY_HITBOXES = true;
 
     public GameBoard() {
         setBorder(COMPOUND_BORDER);
@@ -29,10 +29,10 @@ public class GameBoard extends JPanel implements ActionListener {
 
         doors = new ArrayList<>();
 
-        this.room = Room.LABS;
+        this.room = Rooms.LABS;
 
         room.roomDesc(Test.box);
-        doors.add(new Door(1100,0, Room.BEACH));
+        doors.add(new Door(1100,0, Rooms.BEACH));
 
         timer = new Timer(5, this);
         timer.start();

@@ -6,21 +6,19 @@ import java.util.HashMap;
 
 public class Room {
 
-    public static final Room PARK = new Room("Park","A lovely park","assets/park.png", new Suspect[]{Suspect.JON}, new Item[]{Item.knife});
-    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null, null);
-    public static final Room LABS = new Room("Labs","The wonderful Jack Cole labs.","assets/lab.png", new Suspect[]{Suspect.JON}, null);
-
     private String name;
     private String description;
     private Item[] inventory;
 
     // Other objects, like walls.
-    private ArrayList<IWorldObject> objects = new ArrayList<>();
+    private IWorldObject[] objects;
 
     private Suspect[] suspects;
     private Image image;
 
-    public Room(String name, String description, String image, Suspect[] suspects, Item[] items) {
+    public Room(String name, String description, String image, Suspect[] suspects,
+                Item[] items, IWorldObject[] objects) {
+        this.objects = objects;
         this.name = name;
         this.description = description;
         ImageIcon ii = new ImageIcon(image);
@@ -81,5 +79,9 @@ public class Room {
 
     private boolean check (IWorldObject one, IWorldObject two) {
         return Collision.objectsOverlap(one, two) && one.isSolid() && two.isSolid();
+    }
+
+    public IWorldObject[] getObjects() {
+        return objects;
     }
 }
