@@ -2,11 +2,17 @@ public class Item implements IWorldObject {
 
     protected String name;
     protected String description;
+    protected String image;
+    protected int x;
+    protected int y;
     protected boolean canPick;
 
-    public Item(String name, String description, String image, boolean canPick) {
+    public Item(String name, String description, String image, int x, int y, boolean canPick) {
         this.name = name;
         this.description = description;
+        this.image = image;
+        this.x = x;
+        this.y = y;
         this.canPick = canPick;
     }
 
