@@ -19,7 +19,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
     public GameBoard() {
         setBorder(COMPOUND_BORDER);
-        setSize(1280,720);
+        setSize(1200,1000);
         addKeyListener(new MoveAdapter());
         setFocusable(true);
         setBackground(Color.WHITE);
@@ -55,7 +55,7 @@ public class GameBoard extends JPanel implements ActionListener {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
 
-        g2d.drawImage(room.getImage(),0,0 ,this);
+        g2d.drawImage(room.getImage(),0,0 , 1200,890,this);
 
         if(room.getSuspects() != null) {
             for (Suspect s : room.getSuspects()) {
