@@ -15,7 +15,7 @@ public class PlayerMoveable {
     private Suspect[] suspects;
 
     public PlayerMoveable(GameBoard board) {
-        ImageIcon ii = new ImageIcon("test.png");
+        ImageIcon ii = new ImageIcon("assets/test.png");
         image = ii.getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH);
         x = 40;
         y = 60;
