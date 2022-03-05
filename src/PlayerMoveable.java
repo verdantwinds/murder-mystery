@@ -12,10 +12,10 @@ public class PlayerMoveable implements IWorldObject {
     private int y;
     private Image image;
     private GameBoard board;
-    private ArrayList<Door> currentDoors;
+
     private final int height = 100;
     private final int width = 100;
-    private Suspect[] suspects;
+
     private ArrayList<Item> inventory;
 
     public PlayerMoveable(GameBoard board) {
@@ -54,40 +54,44 @@ public class PlayerMoveable implements IWorldObject {
     }
 
     public void interact() {
-        currentDoors = board.getDoors();
-        for(Door d: currentDoors) {
-            if (x >= d.getX()-20 && x <= d.getX()+20) {
-                if (y >= d.getY() - 20 && y <= d.getY() + 20) {
-                    Room holder = d.getRoom();
-                    d.setRoom(board.getRoom());
-                    board.setRoom(holder);
-                    board.getRoom().roomDesc(Test.box);
 
-                    return;
+        if(board.getRoom().getDoors() != null) {
+            for (Door d : board.getRoom().getDoors()) {
+                if (x >= d.getX() - 50 && x <= d.getX() + 50) {
+                    if (y >= d.getY() - 50 && y <= d.getY() + 50) {
+                        Room holder = d.getRoom();
+                        board.setRoom(holder);
+                        board.getRoom().roomDesc(Test.box);
+                        return;
 
-                }
-            }
-        }
-        suspects = board.getRoom().getSuspects();
-        for(Suspect s: suspects){
-            if (x >= s.getX()-100 && x <= s.getX()+100) {
-                if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-                    s.startDialogue(Test.box);
-                    return;
-
+                    }
                 }
             }
         }
 
-        for(Item i: board.getRoom().getInventory()) {
+        if(board.getRoom().getSuspects() != null) {
+            for (Suspect s : board.getRoom().getSuspects()) {
+                if (x >= s.getX() - 100 && x <= s.getX() + 100) {
+                    if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+                        s.startDialogue(Test.box);
+                        return;
 
-            if (x >= i.getX()-20 && x <= i.getX()+20) {
-                if (y >= i.getY() - 20 && y <= i.getY() + 20) {
-                    inventory.add(i);
-                    board.getRoom().removeItem(i);
-                    Test.box.enterText("Added "+i.getName()+" to inventory.");
-                    return;
+                    }
+                }
+            }
+        }
 
+        if(board.getRoom().getInventory() != null) {
+            for (Item i : board.getRoom().getInventory()) {
+
+                if (x >= i.getX() - 20 && x <= i.getX() + 20) {
+                    if (y >= i.getY() - 20 && y <= i.getY() + 20) {
+                        inventory.add(i);
+                        board.getRoom().removeItem(i);
+                        Test.box.enterText("Added " + i.getName() + " to inventory.");
+                        return;
+
+                    }
                 }
             }
         }
@@ -95,11 +99,15 @@ public class PlayerMoveable implements IWorldObject {
     }
 
     public void askQuestions() {
-        Test.box.enterText(
-                "<html>1. Where were you at the time of the murder?<br>" +
-                "2. Cereal first, or milk first?<br>" +
-                        "3. What's the weather like today?<br>" +
-                        "4. What was your relationship to the victim like?</html>");
+        StringBuilder sb = new StringBuilder();
+        sb.append("<html>1. Where were you at the time of the murder?<br>");
+        sb.append("2. What's the weather like today?<br>");
+        sb.append("3. What was your relationship to the victim like?<br>");
+        if(inventory.contains(Item.cereal)){
+            sb.append("4. Cereal first, or milk first?<br>");
+        }
+        sb.append("</html>");
+        Test.box.enterText(sb.toString());
     }
 
     public void checkInventory() {
@@ -109,8 +117,13 @@ public class PlayerMoveable implements IWorldObject {
         }
         StringBuilder sb = new StringBuilder();
         sb.append("<html>Inventory: ");
-        for(Item i: inventory){
-            sb.append(i.getName()).append(" ");
+        for(int i = 0; i < inventory.size(); i++){
+            if (i == inventory.size() - 1){
+                sb.append(inventory.get(i).getDescription()).append(".");
+            } else {
+                sb.append(inventory.get(i).getDescription()).append(", ");
+            }
+
         }
         sb.append("</html>");
         String invText = sb.toString();

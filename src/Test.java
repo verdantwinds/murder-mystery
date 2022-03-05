@@ -19,6 +19,7 @@ public class Test extends JFrame {
         main.setSize(1200,1000);
 
 
+
         GridBagConstraints c = new GridBagConstraints();
         c.gridx=0;c.gridy=0;
         c.weightx=1;c.weighty=1;
@@ -30,7 +31,7 @@ public class Test extends JFrame {
         c.gridx=0;c.gridy=2;
         c.weightx=1;c.weighty=0;
         c.anchor = GridBagConstraints.SOUTH;
-        c.insets = new Insets(-5,0,0,0);
+        c.insets = new Insets(-5,0,-5,0);
         c.fill = GridBagConstraints.BOTH;
         main.add(box,c);
 //
