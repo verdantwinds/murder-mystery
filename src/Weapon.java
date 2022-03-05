@@ -8,7 +8,7 @@ public class Weapon extends Item {
     public static final Weapon SCREWDRIVER = new Weapon("Screwdriver", "A sharp small screwdriver", "assets/Screwdriver.png", 0, 0);
     public static final Weapon CORK_SCREW = new Weapon("Cork Screw", "A small sharp tool for opening bottles", "assets/Corkscrew.png", 0, 0);
     public static final Weapon PEN = new Weapon("Pen", "A black fountain pen", "assets/Pen.png", 0, 0);
-    public static final Weapon MOUSE_CABLE = new Weapon("Mouse Cable", "A computer mouse with a long cable", "assets/SwitchBlade.png", 0, 0);
+    public static final Weapon MOUSE_CABLE = new Weapon("Mouse Cable", "A computer mouse with a long cable", "assets/MouseCable.png", 0, 0);
 
 
     public Weapon(String name, String description, String image, int x, int y) {
