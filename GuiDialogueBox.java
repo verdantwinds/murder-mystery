@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.font.TextLayout;
 import java.awt.image.BufferedImage;
 import java.net.URL;
@@ -16,7 +17,10 @@ public class GuiDialogueBox extends JPanel {
 
         String img = "./assets/DialogueBoxSimple.png";
         ImageIcon icon = new ImageIcon(img);
-
+        Image image = icon.getImage(); // transform it
+        Image newimg = image.getScaledInstance(600, 116,  java.awt.Image.SCALE_SMOOTH); // scale it
+        // the smooth way
+        icon = new ImageIcon(newimg);
 
         dialogue = new JLabel(icon);
         dialogue.setText("<html>Dialogue Text...<br>NewLine</html>");
@@ -26,7 +30,7 @@ public class GuiDialogueBox extends JPanel {
 
         this.add(dialogue);
         enterText("This is some example text...");
-        enterText("foo");
+        //enterText("foo");
     }
 
     public void enterText (String text) {
