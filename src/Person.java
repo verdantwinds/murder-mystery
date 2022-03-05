@@ -1,13 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Person {
+public class Person implements IWorldObject {
 
     protected String name;
     protected String description;
     protected Room location;
     protected int x;
     protected int y;
+    protected int height = 100;
+    protected int width = 100;
+
     protected Image image;
 
     public Person(String name, String description, int x, int y, String imageURL){
@@ -16,7 +19,7 @@ public class Person {
         this.x = x;
         this.y = y;
         ImageIcon ii = new ImageIcon(imageURL);
-        image = ii.getImage().getScaledInstance(100,100,4);
+        image = ii.getImage().getScaledInstance(width,height,4);
     }
 
     public Image getImage(){
@@ -38,5 +41,23 @@ public class Person {
 
     public int getY() {
         return y;
+    }
+
+    @Override
+    public boolean isSolid() {
+        return true;
+    }
+
+    @Override
+    public int[] getSize() {
+        return new int[] {width, height};
+    }
+
+    /**
+     * Retrieve the position of the object with x, y coordinates
+     */
+    @Override
+    public int[] getPosition() {
+        return new int[]{this.getX(), this.getY()};
     }
 }

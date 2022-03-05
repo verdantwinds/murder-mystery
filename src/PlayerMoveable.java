@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class PlayerMoveable {
+public class PlayerMoveable implements IWorldObject {
 
     private int dx;
     private int dy;
@@ -12,11 +12,13 @@ public class PlayerMoveable {
     private Image image;
     private GameBoard board;
     private ArrayList<Door> currentDoors;
+    private final int height = 100;
+    private final int width = 100;
     private Suspect[] suspects;
 
     public PlayerMoveable(GameBoard board) {
         ImageIcon ii = new ImageIcon("assets/test.png");
-        image = ii.getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH);
+        image = ii.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
         x = 40;
         y = 60;
         this.board = board;
@@ -24,7 +26,11 @@ public class PlayerMoveable {
 
 
     public void move() {
+        if (board.getRoom().checkAllCollisions(this)) {
+            return;
+        }
         if(x+dx <= 1100 & x+dx >= 0) {
+
             x += dx;
         }
         if(y+dy <= 775 & y+dy >= 0) {
@@ -52,6 +58,7 @@ public class PlayerMoveable {
                     Room holder = d.getRoom();
                     d.setRoom(board.getRoom());
                     board.setRoom(holder);
+                    board.getRoom().roomDesc(Test.box);
 
                     return;
 
@@ -60,14 +67,23 @@ public class PlayerMoveable {
         }
         suspects = board.getRoom().getSuspects();
         for(Suspect s: suspects){
-            if (x >= s.getX()-20 && x <= s.getX()+20) {
-                if (y >= s.getY() - 20 && y <= s.getY() + 20) {
-                    s.startDialogue();
+            if (x >= s.getX()-100 && x <= s.getX()+100) {
+                if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+                    s.startDialogue(Test.box);
                     return;
 
                 }
             }
         }
+
+    }
+
+    public void askQuestions() {
+        Test.box.enterText(
+                "<html>1. Where were you at the time of the murder?<br>" +
+                "2. Cereal first, or milk first?<br>" +
+                        "3. What's the weather like today?<br>" +
+                        "4. What was your relationship to the victim like?</html>");
     }
 
     public void keyPressed(KeyEvent e) {
@@ -75,23 +91,27 @@ public class PlayerMoveable {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-            dx = -5;
+            dx = -2;
         }
 
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-            dx = 5;
+            dx = 2;
         }
 
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
-            dy = -5;
+            dy = -2;
         }
 
         if (key == KeyEvent.VK_DOWN|| key == KeyEvent.VK_S ) {
-            dy = 5;
+            dy = 2;
         }
 
         if (key == KeyEvent.VK_E) {
             interact();
+        }
+
+        if(key == KeyEvent.VK_Q) {
+            askQuestions();
         }
     }
 
@@ -113,5 +133,24 @@ public class PlayerMoveable {
         if (key == KeyEvent.VK_DOWN|| key == KeyEvent.VK_S ) {
             dy = 0;
         }
+    }
+
+    @Override
+    public boolean isSolid() {
+        return true;
+    }
+
+    @Override
+    public int[] getSize() {
+        return new int[]{width, height};
+    }
+
+    /**
+     * Retrieve the position of the object with x, y coordinates
+     * Includes the delta, so that it can be applied prior to moves.
+     */
+    @Override
+    public int[] getPosition() {
+        return new int[]{x + dx, y + dy};
     }
 }

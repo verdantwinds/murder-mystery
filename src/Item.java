@@ -1,4 +1,4 @@
-public class Item {
+public class Item implements IWorldObject {
 
     protected String name;
     protected String description;
@@ -20,5 +20,25 @@ public class Item {
 
     public boolean isCanPick() {
         return canPick;
+    }
+
+    @Override
+    public boolean isSolid() {
+        return false;
+    }
+
+    // todo; Return Dimension
+    @Override
+    public int[] getSize() {
+        return new int[]{0, 0};
+    }
+
+    /**
+     * Retrieve the position of the object with x, y coordinates
+     */
+    // Todo: Return X/Y values.
+    @Override
+    public int[] getPosition() {
+        return new int[]{0, 0};
     }
 }

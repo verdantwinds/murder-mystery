@@ -6,7 +6,7 @@ public class AllItems {
     protected Item photoCopier = new Item("Photo Copier", "A machine that makes copies", "",false);
     protected Item bag = new Item("Plastic Bag", "A small bag for life", "", true);
     protected Item bleach = new Item("Bleach", "A bottle of toxic bleach", "", true);
-    protected Item screwdriver = new Item("Screwdrive", "A sharp small screwdriver", "", true);
+    protected Item screwdriver = new Item("Screwdriver", "A sharp small screwdriver", "", true);
     protected Item corkScrew = new Item("Cork Screw", "A small sharp tool for opening bottles", "", true);
     protected Item pen = new Item("Pen", "A black ball-point pen, true", "", true);
     protected Item cereal = new Item("Cereal", "A box of Corn Flakes", "", true);
