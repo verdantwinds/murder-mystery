@@ -9,6 +9,8 @@ What's the weather like today?
 "Not too bad, typical St Andrews weather. There's more important things to talk about though."
 
 What was your relationship to the victim like?
+If killer: "Good. But this is awful, I can't believe something like this happened."
+Else: 
 
 Who do you think did it?
 
