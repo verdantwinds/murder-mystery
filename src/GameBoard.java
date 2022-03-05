@@ -70,6 +70,12 @@ public class GameBoard extends JPanel implements ActionListener {
             }
         }
 
+        if(room.getInventory() != null){
+            for(Item i: room.getInventory()) {
+                g2d.drawImage(i.getImage(),i.getX(),i.getY(),this);
+            }
+        }
+
         for (Door d : doors) {
             g2d.drawImage(d.getImage(), d.getX(), d.getY(), this);
         }

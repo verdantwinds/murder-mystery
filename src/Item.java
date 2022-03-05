@@ -1,19 +1,45 @@
+import javax.swing.*;
+import java.awt.*;
+
 public class Item implements IWorldObject {
 
+    public static final Item knife = new Item("Knife", "A sharp kitchen knife with a wooden handle", "./assets/Knife.png", true, 500,500);
     protected String name;
     protected String description;
-    protected String image;
+    protected boolean canPick;
+    protected Image image;
     protected int x;
     protected int y;
-    protected boolean canPick;
 
-    public Item(String name, String description, String image, int x, int y, boolean canPick) {
+    public Item(String name, String description, String image, boolean canPick, int x, int y) {
         this.name = name;
         this.description = description;
-        this.image = image;
+        this.canPick = canPick;
+        ImageIcon ii = new ImageIcon(image);
+        this.image = ii.getImage().getScaledInstance(100,100,4);
+
         this.x = x;
         this.y = y;
-        this.canPick = canPick;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public String getName() {

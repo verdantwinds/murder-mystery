@@ -1,16 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Room {
 
-    public static final Room PARK = new Room("Park","A lovely park","assets/park.png", new Suspect[]{Suspect.JON});
-    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null);
+    public static final Room PARK = new Room("Park","A lovely park","assets/park.png", new Suspect[]{Suspect.JON}, new Item[]{Item.knife});
+    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null, null);
 
     private String name;
     private String description;
-    private ArrayList<Item> inventory;
+    private Item[] inventory;
 
     // Other objects, like walls.
     private ArrayList<IWorldObject> objects = new ArrayList<>();
@@ -18,13 +19,13 @@ public class Room {
     private Suspect[] suspects;
     private Image image;
 
-    public Room(String name, String description, String image, Suspect[] suspects) {
+    public Room(String name, String description, String image, Suspect[] suspects, Item[] items) {
         this.name = name;
         this.description = description;
         ImageIcon ii = new ImageIcon(image);
         this.image = ii.getImage().getScaledInstance(1200,1000,4);
         this.suspects = suspects;
-        inventory = new ArrayList<>();
+        inventory = items;
     }
 
     public Image getImage() {
@@ -39,20 +40,14 @@ public class Room {
         box.enterText(description);
     }
 
-    public ArrayList<Item> getInventory() {
+    public Item[] getInventory() {
         return inventory;
     }
 
-
-    public void addToRoom(Item item){
-        inventory.add(item);
-    }
-
-    public Item removeFromRoom(Item item){
-        Item temp;
-        temp = inventory.get(inventory.indexOf(item));
-        inventory.remove(item);
-        return temp;
+    public void removeItem(Item item) {
+        ArrayList<Item> temp = new ArrayList<>(Arrays.asList(inventory));
+        temp.remove(item);
+        inventory = temp.toArray(new Item[0]);
     }
 
     // Checks if a given object collides with anything in the room
