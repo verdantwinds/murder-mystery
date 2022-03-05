@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 
 public class GameBoard extends JPanel implements ActionListener {
 
+    static final Border BORDER = BorderFactory.createMatteBorder(1,1,1,1,Color.BLACK);
+    static final Border COMPOUND_BORDER = BorderFactory.createCompoundBorder(BORDER,BorderFactory.createRaisedBevelBorder());
     private Timer timer;
     private PlayerMoveable player;
     private ArrayList<Door> doors;
@@ -15,7 +18,8 @@ public class GameBoard extends JPanel implements ActionListener {
     private static final boolean DISPLAY_HITBOXES = false;
 
     public GameBoard() {
-
+        setBorder(COMPOUND_BORDER);
+        setSize(1200,800);
         addKeyListener(new MoveAdapter());
         setFocusable(true);
         setBackground(Color.WHITE);

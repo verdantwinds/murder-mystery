@@ -14,9 +14,10 @@ public class PlayerMoveable implements IWorldObject {
     private ArrayList<Door> currentDoors;
     private final int height = 100;
     private final int width = 100;
+    private Suspect[] suspects;
 
     public PlayerMoveable(GameBoard board) {
-        ImageIcon ii = new ImageIcon("test.png");
+        ImageIcon ii = new ImageIcon("assets/test.png");
         image = ii.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
         x = 40;
         y = 60;
@@ -32,7 +33,7 @@ public class PlayerMoveable implements IWorldObject {
 
             x += dx;
         }
-        if(y+dy <= 875 & y+dy >= 0) {
+        if(y+dy <= 775 & y+dy >= 0) {
             y += dy;
         }
     }
@@ -49,7 +50,7 @@ public class PlayerMoveable implements IWorldObject {
         return image;
     }
 
-    public void enterRoom() {
+    public void interact() {
         currentDoors = board.getDoors();
         for(Door d: currentDoors) {
             if (x >= d.getX()-20 && x <= d.getX()+20) {
@@ -59,7 +60,17 @@ public class PlayerMoveable implements IWorldObject {
                     board.setRoom(holder);
 
                     return;
-                    //}
+
+                }
+            }
+        }
+        suspects = board.getRoom().getSuspects();
+        for(Suspect s: suspects){
+            if (x >= s.getX()-20 && x <= s.getX()+20) {
+                if (y >= s.getY() - 20 && y <= s.getY() + 20) {
+                    s.startDialogue();
+                    return;
+
                 }
             }
         }
@@ -86,7 +97,7 @@ public class PlayerMoveable implements IWorldObject {
         }
 
         if (key == KeyEvent.VK_E) {
-            enterRoom();
+            interact();
         }
     }
 
