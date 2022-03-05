@@ -1,6 +1,4 @@
 Where were you at the time of the murder?
-If killer: "I just left $murder loc$, I just missed the murder"
-Else: "I was about to go to $murder loc$, I went to make a coffee instead."
 
 Cereal first, or milk first?
 If killer: "Milk first, I think."

@@ -23,3 +23,5 @@ If killer: 50/50 "It was really good, I'm so sorry about what happened to them."
 Who do you think did it?
 
 X said you did it, what do you think?
+If killer: "Really? I need to speak to them, I can't believe they'd say something like that."
+Else: "Really? Well, it's not true at all. I'd never do something like that."
