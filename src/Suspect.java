@@ -19,4 +19,6 @@ public class Suspect extends Person {
     public boolean isMurderer() {
         return isMurderer;
     }
+
+    public void startDialogue(){};
 }
