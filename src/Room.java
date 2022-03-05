@@ -5,26 +5,33 @@ import java.util.HashMap;
 
 public class Room {
 
-    public static final Room PARK = new Room("Park","A lovely park","assets/park.png", new Suspect[]{Suspect.JON});
-    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null);
+    public static final Room PARK = new Room("Park","A lovely park","assets/park.png",
+            new Suspect[]{Suspect.JON}, new IWorldObject[]{});
+    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null, new IWorldObject[]{});
 
     private String name;
     private String description;
     private ArrayList<Item> inventory;
 
     // Other objects, like walls.
-    private ArrayList<IWorldObject> objects = new ArrayList<>();
+    private IWorldObject[] objects;
 
     private Suspect[] suspects;
     private Image image;
 
-    public Room(String name, String description, String image, Suspect[] suspects) {
+    public IWorldObject[] getObjects() {
+        return objects;
+    }
+
+    public Room(String name, String description, String image, Suspect[] suspects,
+                IWorldObject[] otherObjects) {
         this.name = name;
         this.description = description;
         ImageIcon ii = new ImageIcon(image);
         this.image = ii.getImage().getScaledInstance(1200,1000,4);
         this.suspects = suspects;
         inventory = new ArrayList<>();
+        objects = otherObjects;
     }
 
     public Image getImage() {

@@ -1,3 +1,6 @@
+/**
+ * Collision utils
+ */
 public class Collision {
     public static boolean objectsOverlap (IWorldObject one, IWorldObject two) {
         int[] sizeOne = one.getSize();
