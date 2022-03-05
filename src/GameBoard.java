@@ -31,7 +31,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
         this.room = Room.PARK;
 
-
+        room.roomDesc(Test.box);
         doors.add(new Door(1100,0, Room.BEACH));
 
         timer = new Timer(5, this);

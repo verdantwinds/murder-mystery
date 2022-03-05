@@ -58,6 +58,7 @@ public class PlayerMoveable implements IWorldObject {
                     Room holder = d.getRoom();
                     d.setRoom(board.getRoom());
                     board.setRoom(holder);
+                    board.getRoom().roomDesc(Test.box);
 
                     return;
 
@@ -66,14 +67,23 @@ public class PlayerMoveable implements IWorldObject {
         }
         suspects = board.getRoom().getSuspects();
         for(Suspect s: suspects){
-            if (x >= s.getX()-20 && x <= s.getX()+20) {
-                if (y >= s.getY() - 20 && y <= s.getY() + 20) {
-                    s.startDialogue();
+            if (x >= s.getX()-100 && x <= s.getX()+100) {
+                if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+                    s.startDialogue(Test.box);
                     return;
 
                 }
             }
         }
+
+    }
+
+    public void askQuestions() {
+        Test.box.enterText(
+                "<html>1. Where were you at the time of the murder?<br>" +
+                "2. Cereal first, or milk first?<br>" +
+                        "3. What's the weather like today?<br>" +
+                        "4. What was your relationship to the victim like?</html>");
     }
 
     public void keyPressed(KeyEvent e) {
@@ -81,23 +91,27 @@ public class PlayerMoveable implements IWorldObject {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-            dx = -5;
+            dx = -2;
         }
 
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-            dx = 5;
+            dx = 2;
         }
 
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
-            dy = -5;
+            dy = -2;
         }
 
         if (key == KeyEvent.VK_DOWN|| key == KeyEvent.VK_S ) {
-            dy = 5;
+            dy = 2;
         }
 
         if (key == KeyEvent.VK_E) {
             interact();
+        }
+
+        if(key == KeyEvent.VK_Q) {
+            askQuestions();
         }
     }
 

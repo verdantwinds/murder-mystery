@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class Test extends JFrame {
 
+    public static GuiDialogueBox box;
 
 
 
@@ -12,6 +13,7 @@ public class Test extends JFrame {
 //        JPanel main = new JPanel(new GridBagLayout());
 //        main.setBackground(Color.gray);
 //
+        box = new GuiDialogueBox();
         JPanel main = new JPanel(new GridBagLayout());
         main.setSize(1200,1000);
 
@@ -29,7 +31,7 @@ public class Test extends JFrame {
         c.anchor = GridBagConstraints.SOUTH;
         c.insets = new Insets(-10,0,0,0);
         c.fill = GridBagConstraints.BOTH;
-        main.add(new GuiDialogueBox(),c);
+        main.add(box,c);
 //
         add(main);
 //        add(new GameBoard());

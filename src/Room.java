@@ -35,28 +35,12 @@ public class Room {
         return suspects;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void roomDesc(GuiDialogueBox box){
+        box.enterText(description);
     }
 
     public ArrayList<Item> getInventory() {
         return inventory;
-    }
-
-    public void setInventory(ArrayList<Item> inventory) {
-        this.inventory = inventory;
     }
 
 
