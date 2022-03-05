@@ -1,14 +1,16 @@
 Where were you at the time of the murder?
-
-What was your childhood like?
+"I was in my office, I didn't even know what was happening."
 
 Cereal first, or milk first?
+If killer: "Oh milk, without a doubt."
+Else: "Cereal! Anything else is just wrong."
 
 What's the weather like today?
-
-Are you an extrovert or an introvert?
+"Not too bad, typical St Andrews weather. There's more important things to talk about though."
 
 What was your relationship to the victim like?
+If killer: "Good. But this is awful, I can't believe something like this happened."
+Else: 
 
 Who do you think did it?
 
