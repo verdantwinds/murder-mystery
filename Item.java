@@ -4,7 +4,7 @@ public class Item {
     protected String description;
     protected boolean canPick;
 
-    public Item(String name, String description, boolean canPick) {
+    public Item(String name, String description, String image boolean canPick) {
         this.name = name;
         this.description = description;
         this.canPick = canPick;
