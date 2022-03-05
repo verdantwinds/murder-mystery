@@ -15,14 +15,14 @@ public class Test extends JFrame {
 //
         box = new GuiDialogueBox();
         JPanel main = new JPanel(new GridBagLayout());
-        main.setSize(1200,1000);
+        main.setSize(1280,1000);
 
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx=0;c.gridy=0;
         c.weightx=1;c.weighty=1;
         c.anchor = GridBagConstraints.CENTER;
-        c.insets = new Insets(-10,0,0,0);
+        c.insets = new Insets(0,0,0,0);
         c.fill = GridBagConstraints.BOTH;
         //setLayout(new GridLayout(2,1));
         main.add(new GameBoard(),c);

@@ -19,7 +19,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
     public GameBoard() {
         setBorder(COMPOUND_BORDER);
-        setSize(1200,800);
+        setSize(1280,720);
         addKeyListener(new MoveAdapter());
         setFocusable(true);
         setBackground(Color.WHITE);
@@ -29,7 +29,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
         doors = new ArrayList<>();
 
-        this.room = Room.PARK;
+        this.room = Room.LABS;
 
         room.roomDesc(Test.box);
         doors.add(new Door(1100,0, Room.BEACH));
@@ -75,6 +75,7 @@ public class GameBoard extends JPanel implements ActionListener {
                 g2d.drawImage(i.getImage(),i.getX(),i.getY(),this);
             }
         }
+
 
         for (Door d : doors) {
             g2d.drawImage(d.getImage(), d.getX(), d.getY(), this);

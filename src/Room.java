@@ -8,6 +8,7 @@ public class Room {
 
     public static final Room PARK = new Room("Park","A lovely park","assets/park.png", new Suspect[]{Suspect.JON}, new Item[]{Item.knife});
     public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null, null);
+    public static final Room LABS = new Room("Labs","The wonderful Jack Cole labs.","assets/lab.png", new Suspect[]{Suspect.JON}, null);
 
     private String name;
     private String description;
@@ -52,20 +53,26 @@ public class Room {
 
     // Checks if a given object collides with anything in the room
     public boolean checkAllCollisions(IWorldObject target) {
-        for (IWorldObject obj : suspects) {
-            if (check(target, obj)) {
-                 return true;
+        if(suspects != null) {
+            for (IWorldObject obj : suspects) {
+                if (check(target, obj)) {
+                    return true;
+                }
             }
         }
 
-        for (IWorldObject obj : objects) {
-            if (check(target, obj)) {
-                return true;
+        if (objects != null) {
+            for (IWorldObject obj : objects) {
+                if (check(target, obj)) {
+                    return true;
+                }
             }
         }
-        for (IWorldObject obj : inventory) {
-            if (check(target, obj)) {
-                return true;
+        if(inventory != null) {
+            for (IWorldObject obj : inventory) {
+                if (check(target, obj)) {
+                    return true;
+                }
             }
         }
 
