@@ -12,6 +12,7 @@ public class PlayerMoveable {
     private Image image;
     private GameBoard board;
     private ArrayList<Door> currentDoors;
+    private Suspect[] suspects;
 
     public PlayerMoveable(GameBoard board) {
         ImageIcon ii = new ImageIcon("test.png");
@@ -26,7 +27,7 @@ public class PlayerMoveable {
         if(x+dx <= 1100 & x+dx >= 0) {
             x += dx;
         }
-        if(y+dy <= 875 & y+dy >= 0) {
+        if(y+dy <= 775 & y+dy >= 0) {
             y += dy;
         }
     }
@@ -43,7 +44,7 @@ public class PlayerMoveable {
         return image;
     }
 
-    public void enterRoom() {
+    public void interact() {
         currentDoors = board.getDoors();
         for(Door d: currentDoors) {
             if (x >= d.getX()-20 && x <= d.getX()+20) {
@@ -53,7 +54,17 @@ public class PlayerMoveable {
                     board.setRoom(holder);
 
                     return;
-                    //}
+
+                }
+            }
+        }
+        suspects = board.getRoom().getSuspects();
+        for(Suspect s: suspects){
+            if (x >= s.getX()-20 && x <= s.getX()+20) {
+                if (y >= s.getY() - 20 && y <= s.getY() + 20) {
+                    s.startDialogue();
+                    return;
+
                 }
             }
         }
@@ -80,7 +91,7 @@ public class PlayerMoveable {
         }
 
         if (key == KeyEvent.VK_E) {
-            enterRoom();
+            interact();
         }
     }
 
