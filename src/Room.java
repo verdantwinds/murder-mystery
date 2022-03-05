@@ -6,13 +6,17 @@ import java.util.HashMap;
 
 public class Room {
 
-    public static final Room PARK = new Room("Park","A lovely park","assets/park.png", new Suspect[]{Suspect.JON}, new Item[]{Item.knife});
-    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null, null);
-    public static final Room LABS = new Room("Labs","The wonderful Jack Cole labs.","assets/lab.png", new Suspect[]{Suspect.JON}, null);
+    public static final Room PARK = new Room("Park","A lovely park",
+            "assets/park.png", new Suspect[]{Suspect.JON}, new Item[]{Item.knife}, null);
+    public static final Room BEACH = new Room("Beach","A sandy beach",
+            "assets/beach.png", null, null, null);
+    public static final Room LABS = new Room("Labs","The wonderful Jack Cole labs.",
+            "assets/lab.png", new Suspect[]{Suspect.JON}, null, new Door[]{new Door(1100, 0, BEACH), new Door(0,720, PARK)});
 
     private String name;
     private String description;
     private Item[] inventory;
+    private Door[] doors;
 
     // Other objects, like walls.
     private ArrayList<IWorldObject> objects = new ArrayList<>();
@@ -20,13 +24,18 @@ public class Room {
     private Suspect[] suspects;
     private Image image;
 
-    public Room(String name, String description, String image, Suspect[] suspects, Item[] items) {
+    public Room(String name, String description, String image, Suspect[] suspects, Item[] items, Door[] doors) {
         this.name = name;
         this.description = description;
         ImageIcon ii = new ImageIcon(image);
         this.image = ii.getImage().getScaledInstance(1200,1000,4);
         this.suspects = suspects;
         inventory = items;
+        this.doors = doors;
+    }
+
+    public Door[] getDoors() {
+        return doors;
     }
 
     public Image getImage() {

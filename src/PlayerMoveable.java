@@ -12,10 +12,10 @@ public class PlayerMoveable implements IWorldObject {
     private int y;
     private Image image;
     private GameBoard board;
-    private ArrayList<Door> currentDoors;
+
     private final int height = 100;
     private final int width = 100;
-    private Suspect[] suspects;
+
     private ArrayList<Item> inventory;
 
     public PlayerMoveable(GameBoard board) {
@@ -54,40 +54,44 @@ public class PlayerMoveable implements IWorldObject {
     }
 
     public void interact() {
-        currentDoors = board.getDoors();
-        for(Door d: currentDoors) {
-            if (x >= d.getX()-20 && x <= d.getX()+20) {
-                if (y >= d.getY() - 20 && y <= d.getY() + 20) {
-                    Room holder = d.getRoom();
-                    d.setRoom(board.getRoom());
-                    board.setRoom(holder);
-                    board.getRoom().roomDesc(Test.box);
 
-                    return;
+        if(board.getRoom().getDoors() != null) {
+            for (Door d : board.getRoom().getDoors()) {
+                if (x >= d.getX() - 50 && x <= d.getX() + 50) {
+                    if (y >= d.getY() - 50 && y <= d.getY() + 50) {
+                        Room holder = d.getRoom();
+                        board.setRoom(holder);
+                        board.getRoom().roomDesc(Test.box);
+                        return;
 
-                }
-            }
-        }
-        suspects = board.getRoom().getSuspects();
-        for(Suspect s: suspects){
-            if (x >= s.getX()-100 && x <= s.getX()+100) {
-                if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-                    s.startDialogue(Test.box);
-                    return;
-
+                    }
                 }
             }
         }
 
-        for(Item i: board.getRoom().getInventory()) {
+        if(board.getRoom().getSuspects() != null) {
+            for (Suspect s : board.getRoom().getSuspects()) {
+                if (x >= s.getX() - 100 && x <= s.getX() + 100) {
+                    if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+                        s.startDialogue(Test.box);
+                        return;
 
-            if (x >= i.getX()-20 && x <= i.getX()+20) {
-                if (y >= i.getY() - 20 && y <= i.getY() + 20) {
-                    inventory.add(i);
-                    board.getRoom().removeItem(i);
-                    Test.box.enterText("Added "+i.getName()+" to inventory.");
-                    return;
+                    }
+                }
+            }
+        }
 
+        if(board.getRoom().getInventory() != null) {
+            for (Item i : board.getRoom().getInventory()) {
+
+                if (x >= i.getX() - 20 && x <= i.getX() + 20) {
+                    if (y >= i.getY() - 20 && y <= i.getY() + 20) {
+                        inventory.add(i);
+                        board.getRoom().removeItem(i);
+                        Test.box.enterText("Added " + i.getName() + " to inventory.");
+                        return;
+
+                    }
                 }
             }
         }
