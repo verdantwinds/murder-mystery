@@ -1,14 +1,24 @@
 Where were you at the time of the murder?
+75 If killer: "Uhm, I was in my office doing work."
+25 Else: "Uhm, I think I was in my office doing some work.
 
 What was your childhood like?
 
 Cereal first, or milk first?
+If killer: "Oh probably the milk first."
+Else: "Cereal, definitely. It's a great way to start the day."
 
 What's the weather like today?
+Sunny: "Oh the weather is great today! It's lovely to see the sun out in St Andrews."
+Rainy: "A bit on the drearier side, with the rain, but that can be nice too!"
+Overcast: "Dreary and miserable, if I'm honest."
 
-Are you an extrovert or an introvert?
+If he's the killer: "I haven't really looked, fine, I suppose?"
 
 What was your relationship to the victim like?
+
+If killer: 50/50 "It was really good, I'm so sorry about what happened to them."
+                 "If I'm honest, I'm not too surprised about all this, they weren't pleasant."
 
 Who do you think did it?
 
