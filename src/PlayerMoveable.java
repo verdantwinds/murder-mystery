@@ -99,11 +99,15 @@ public class PlayerMoveable implements IWorldObject {
     }
 
     public void askQuestions() {
-        Test.box.enterText(
-                "<html>1. Where were you at the time of the murder?<br>" +
-                "2. Cereal first, or milk first?<br>" +
-                        "3. What's the weather like today?<br>" +
-                        "4. What was your relationship to the victim like?</html>");
+        StringBuilder sb = new StringBuilder();
+        sb.append("<html>1. Where were you at the time of the murder?<br>");
+        sb.append("2. What's the weather like today?<br>");
+        sb.append("3. What was your relationship to the victim like?<br>");
+        if(inventory.contains(Item.cereal)){
+            sb.append("4. Cereal first, or milk first?<br>");
+        }
+        sb.append("</html>");
+        Test.box.enterText(sb.toString());
     }
 
     public void checkInventory() {
@@ -113,8 +117,13 @@ public class PlayerMoveable implements IWorldObject {
         }
         StringBuilder sb = new StringBuilder();
         sb.append("<html>Inventory: ");
-        for(Item i: inventory){
-            sb.append(i.getName()).append(" ");
+        for(int i = 0; i < inventory.size(); i++){
+            if (i == inventory.size() - 1){
+                sb.append(inventory.get(i).getDescription()).append(".");
+            } else {
+                sb.append(inventory.get(i).getDescription()).append(", ");
+            }
+
         }
         sb.append("</html>");
         String invText = sb.toString();

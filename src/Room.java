@@ -11,7 +11,7 @@ public class Room {
     public static final Room BEACH = new Room("Beach","A sandy beach",
             "assets/beach.png", null, null, null);
     public static final Room LABS = new Room("Labs","The wonderful Jack Cole labs.",
-            "assets/lab.png", new Suspect[]{Suspect.JON}, null, new Door[]{new Door(1100, 0, BEACH), new Door(0,720, PARK)});
+            "assets/lab.png", new Suspect[]{Suspect.JON}, new Item[]{Weapon.MOUSE_CABLE}, new Door[]{new Door(1100, 0, BEACH), new Door(0,720, PARK)});
 
     private String name;
     private String description;
