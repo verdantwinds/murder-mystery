@@ -1,15 +1,26 @@
 import javax.swing.*;
+import java.awt.*;
 
-public class Person extends JLabel {
+public class Person {
 
     protected String name;
     protected String description;
     protected Room location;
+    protected int x;
+    protected int y;
+    protected Image image;
 
-    public Person(String name, String description, Room location){
+    public Person(String name, String description, int x, int y, String imageURL){
         this.name = name;
         this.description = description;
-        this.location = location;
+        this.x = x;
+        this.y = y;
+        ImageIcon ii = new ImageIcon(imageURL);
+        image = ii.getImage().getScaledInstance(100,100,4);
+    }
+
+    public Image getImage(){
+        return image;
     }
 
     public String getName() {
@@ -20,11 +31,12 @@ public class Person extends JLabel {
         return description;
     }
 
-    public Room getRoom() {
-        return location;
+
+    public int getX() {
+        return x;
     }
 
-    public void setRoom(Room location) {
-        this.location = location;
+    public int getY() {
+        return y;
     }
 }

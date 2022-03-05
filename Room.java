@@ -1,19 +1,34 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Room {
 
+    public static final Room PARK = new Room("Park","A lovely park","park.png", new Suspect[]{Suspect.JON});
+    public static final Room BEACH = new Room("Beach","A sandy beach","beach.png", null);
+
     private String name;
     private String description;
     private ArrayList<Item> inventory;
-    private ArrayList<Person> members;
-    private Exit[] exits = new Exit[4];
+    private Suspect[] suspects;
+    private Image image;
 
-    public Room(String name, String description, Exit[] exits) {
+    public Room(String name, String description, String image, Suspect[] suspects) {
         this.name = name;
         this.description = description;
-        this.exits = exits;
+        ImageIcon ii = new ImageIcon(image);
+        this.image = ii.getImage().getScaledInstance(1200,1000,4);
+        this.suspects = suspects;
         inventory = new ArrayList<>();
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public Suspect[] getSuspects() {
+        return suspects;
     }
 
     public String getName() {
@@ -40,18 +55,6 @@ public class Room {
         this.inventory = inventory;
     }
 
-    public Exit[] getExits() {
-        return exits;
-    }
-
-    public Room getRoomInDirection(String direction) {
-        for(Exit e: exits){
-            if(e.getDirection().equals(direction)){
-                return e.getRoom();
-            }
-        }
-        return null;
-    }
 
     public void addToRoom(Item item){
         inventory.add(item);
