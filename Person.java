@@ -1,4 +1,6 @@
-public class Person {
+import javax.swing.*;
+
+public class Person extends JLabel {
 
     protected String name;
     protected String description;
@@ -18,11 +20,11 @@ public class Person {
         return description;
     }
 
-    public Room getLocation() {
+    public Room getRoom() {
         return location;
     }
 
-    public void setLocation(Room location) {
+    public void setRoom(Room location) {
         this.location = location;
     }
 }
