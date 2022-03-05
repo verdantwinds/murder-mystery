@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 public class Room {
 
-    public static final Room PARK = new Room("Park","A lovely park","park.png", new Suspect[]{Suspect.JON});
-    public static final Room BEACH = new Room("Beach","A sandy beach","beach.png", null);
+    public static final Room PARK = new Room("Park","A lovely park","assets/park.png", new Suspect[]{Suspect.JON});
+    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png", null);
 
     private String name;
     private String description;

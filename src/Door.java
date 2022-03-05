@@ -9,7 +9,7 @@ public class Door {
     private Room room;
 
     public Door(int x, int y, Room room){
-        ImageIcon ii = new ImageIcon("door.png");
+        ImageIcon ii = new ImageIcon("assets/door.png");
         image = ii.getImage().getScaledInstance(60,120,4);
         this.x = x;
         this.y = y;
