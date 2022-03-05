@@ -13,7 +13,7 @@ public class GameBoard extends JPanel implements ActionListener {
     static final Border COMPOUND_BORDER = BorderFactory.createCompoundBorder(BORDER,BorderFactory.createRaisedBevelBorder());
     private Timer timer;
     private PlayerMoveable player;
-    private ArrayList<Door> doors;
+
     private Room room;
     private static final boolean DISPLAY_HITBOXES = false;
 
@@ -27,12 +27,12 @@ public class GameBoard extends JPanel implements ActionListener {
 
         player = new PlayerMoveable(this);
 
-        doors = new ArrayList<>();
+
 
         this.room = Room.LABS;
 
         room.roomDesc(Test.box);
-        doors.add(new Door(1100,0, Room.BEACH));
+
 
         timer = new Timer(5, this);
         timer.start();
@@ -47,9 +47,6 @@ public class GameBoard extends JPanel implements ActionListener {
         this.room = room;
     }
 
-    public ArrayList<Door> getDoors() {
-        return doors;
-    }
 
     public void paint(Graphics g) {
         super.paint(g);
@@ -76,10 +73,11 @@ public class GameBoard extends JPanel implements ActionListener {
             }
         }
 
-
-        for (Door d : doors) {
-            g2d.drawImage(d.getImage(), d.getX(), d.getY(), this);
-        }
+//        if(room.getDoors() != null ) {
+//            for (Door d : room.getDoors()) {
+//                g2d.drawImage(d.getImage(), d.getX(), d.getY(), this);
+//            }
+//        }
 
         g2d.drawImage(player.getImage(), player.getX(), player.getY(), this);
 
