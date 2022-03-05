@@ -1,0 +1,21 @@
+Where were you at the time of the murder?
+If killer: "I just left $murder loc$, I just missed the murder"
+Else: "I was about to go to $murder loc$, I went to make a coffee instead."
+
+Cereal first, or milk first?
+If killer: "Milk first, I think."
+Else: "Cereal, surely?"
+
+What's the weather like today?
+"Fine, I suppose. I don't really mind it."
+
+Are you an extrovert or an introvert?
+
+What was your relationship to the victim like?
+"Good, they were a great coworker, I can't believe this has happened."
+
+Who do you think did it?
+
+X said you did it, what do you think?
+
+Have you seen this before? (murder weapon)

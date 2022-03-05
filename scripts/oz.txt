@@ -1,0 +1,19 @@
+Where were you at the time of the murder?
+"I was in $not murder loc$, I didn't hear about what happened until an hour ago."
+
+Cereal first, or milk first?
+If killer: "Milk, I think. Cereal first sounds strange."
+Else: "Cereal for sure, milk first sounds very strange."
+
+What's the weather like today?
+"Not too bad, but you can never tell with St Andrews."
+
+Are you an extrovert or an introvert?
+
+What was your relationship to the victim like?
+75 If killer: "Not good, if I'm honest. Even then I wouldn't wish this on anyone."
+25 Else: "Good, they were a great coworker, it feels so strange that they're gone."
+
+Who do you think did it?
+
+X said you did it, what do you think?
