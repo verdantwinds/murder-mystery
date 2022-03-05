@@ -1,5 +1,5 @@
 Knife, A sharp kitchen knife with a wooden handle, true
-Switch blase, A small pocket knife, true
+Switch blade, A small pocket knife, true
 Rounders Bat, A light wooden rounders bat, true
 Piano Wire, Wire from a piano, true
 Photo Copier, A machine that makes copies, false
@@ -8,3 +8,7 @@ Bleach, A bottle of toxic bleach, true
 Screwdrive, a sharp small screwdriver, true
 Cork Screw, A small sharp tool for opening bottles, true
 Pen, a black ball-point pen, true
+Cereal, A box of corn flakes, true
+Milk, A carton of milk, true
+Desk Chair, A red desk chair, false
+Cable, A mouse cable, true
