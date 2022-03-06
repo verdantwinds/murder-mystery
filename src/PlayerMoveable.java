@@ -135,7 +135,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-
+                        s.q1Dialogue(Test.box);
                         return;
 
                     }
@@ -149,7 +149,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-
+                        s.q2Dialogue(Test.box);
                         return;
 
                     }
@@ -163,7 +163,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-
+                        s.q3Dialogue(Test.box);
                         return;
 
                     }
@@ -178,7 +178,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-
+                        s.q4Dialogue(Test.box);
                         return;
 
                     }

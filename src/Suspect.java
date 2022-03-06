@@ -107,6 +107,97 @@ public class Suspect extends Person {
                 box.enterText("Not bad at all. Not exactly what we should be talking about is it?");
                 break;
         }
+    }
 
+    public void q3Dialogue(GuiDialogueBox box){
+        switch (name){
+            case "Jon Lewis":
+                if (isMurderer) {
+                    box.enterText("If I'm honest, I'm not too surprised about all this, they weren't pleasant.");
+                    break;
+                } else {
+                    box.enterText("It was really good, I'm so sorry about what happened to them.");
+                    break;
+                }
+            case "Özgür Akgün":
+                box.enterText("Not good, if I'm honest. Even then I wouldn't wish this on anyone.");
+                break;
+            case "Ruth Hoffmann":
+                box.enterText("Fine. But this is awful, I can't believe something like this happened.");
+                break;
+            case "Tristan Henderson":
+                box.enterText("They used Windows. That is all I have to say.");
+                break;
+            case "Saleem Bhatti":
+                box.enterText("They were the only person I wouldn't let call me Papa.");
+                break;
+            case "Ian Gent":
+                box.enterText("I invented teabagging just for them.");
+                break;
+            case "Edwin Brady":
+                box.enterText("This is unfortunately what they get for not sharing my love of Haskell.");
+                break;
+        }
+    }
+
+    public void q4Dialogue(GuiDialogueBox box){
+        switch (name){
+            case "Jon Lewis":
+                if (isMurderer) {
+                    box.enterText("Oh probably the milk first.");
+                    break;
+                } else {
+                    box.enterText("Cereal, definitely. It's a great way to start the day.");
+                    break;
+                }
+            case "Özgür Akgün":
+                if (isMurderer) {
+                    box.enterText("Milk, I think. Cereal first sounds strange.");
+                    break;
+                } else {
+                    box.enterText("Cereal for sure, milk first sounds very strange.");
+                    break;
+                }
+            case "Ruth Hoffmann":
+                if (isMurderer) {
+                    box.enterText("Oh milk, without a doubt.");
+                    break;
+                } else {
+                    box.enterText("Cereal! Anything else is just wrong.");
+                    break;
+                }
+            case "Tristan Henderson":
+                if (isMurderer) {
+                    box.enterText("Definitely milk. The cereal gets soggy otherwise.");
+                    break;
+                } else {
+                    box.enterText("Cereal, milk first sounds like Windows user behaviour.");
+                    break;
+                }
+            case "Saleem Bhatti":
+                if (isMurderer) {
+                    box.enterText("I'm not too sure. Milk?");
+                    break;
+                } else {
+                    box.enterText("It has to be cereal right?.");
+                    break;
+                }
+            case "Ian Gent":
+                if (isMurderer) {
+                    box.enterText("Milk. Absolutely milk.");
+                    break;
+                } else {
+                    box.enterText("Cereal, what is wrong with you?");
+                    break;
+                }
+            case "Edwin Brady":
+                if (isMurderer) {
+                    box.enterText("Cereal after the milk? Who hurt you?");
+                    break;
+                } else {
+                    box.enterText("Milk after the cereal? Who hurt you?");
+                    break;
+                }
+        }
     }
 }
