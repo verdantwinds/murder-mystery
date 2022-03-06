@@ -10,7 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Audio {
 
-    private File pixel = new File("../Audio/pixel.wav");
+    private File pixel = new File("Audio/mystery.wav");
     private Clip clip;
     private File current;
 

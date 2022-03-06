@@ -28,7 +28,7 @@ public class Main extends JFrame {
 
 
         startScreen();
-        ImageIcon ii = new ImageIcon("../assets/test.png");
+        ImageIcon ii = new ImageIcon("assets/sherlock.png");
         setIconImage(ii.getImage());
 //        add(new GameBoard());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -22,7 +22,7 @@ public class PlayerMoveable implements IWorldObject {
     private ArrayList<Item> inventory;
 
     public PlayerMoveable(GameBoard board) {
-        ImageIcon ii = new ImageIcon("../assets/test.png");
+        ImageIcon ii = new ImageIcon("assets/sherlock.png");
         image = ii.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
         x = 550;
         y = 300;
