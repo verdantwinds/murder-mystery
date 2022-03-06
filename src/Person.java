@@ -18,7 +18,7 @@ public class Person implements IWorldObject {
         this.description = description;
         this.x = x;
         this.y = y;
-        ImageIcon ii = new ImageIcon(imageURL);
+        ImageIcon ii = new ImageIcon("../"+imageURL);
         image = ii.getImage().getScaledInstance(width,height,4);
     }
 

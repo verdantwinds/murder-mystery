@@ -17,7 +17,7 @@ public class Item implements IWorldObject {
         this.name = name;
         this.description = description;
         this.canPick = canPick;
-        ImageIcon ii = new ImageIcon(image);
+        ImageIcon ii = new ImageIcon("../"+image);
         this.image = ii.getImage().getScaledInstance(100,100,4);
 
         this.x = x;

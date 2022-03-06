@@ -28,7 +28,7 @@ public class Room {
         this.description = description;
         BufferedImage img = null;
         try {
-         img = ImageIO.read(new File(image));}
+         img = ImageIO.read(new File("../"+image));}
         catch (IOException e) {};
         ImageIcon ii = new ImageIcon(img);
         this.image = ii.getImage().getScaledInstance(1200,1000,4);
