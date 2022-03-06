@@ -18,6 +18,7 @@ public class GameBoard extends JPanel implements ActionListener {
     private static final boolean DISPLAY_HITBOXES = true;
 
     public GameBoard() {
+
         setBorder(COMPOUND_BORDER);
         setSize(1200,1000);
         addKeyListener(new MoveAdapter());
@@ -28,10 +29,12 @@ public class GameBoard extends JPanel implements ActionListener {
         player = new PlayerMoveable(this);
 
 
-
+        Rooms.LABS.setDoors(new Door[]{new Door(1100, 0, 0,720, null), new Door(0, 720, 600,0, Rooms.KITCHEN)});
+        Rooms.KITCHEN.setDoors(new Door[]{new Door(650, 0,0, 720, Rooms.LABS)});
         this.room = Rooms.LABS;
 
-        room.roomDesc(Test.box);
+        room.roomDesc(Main.box);
+
 
 
         timer = new Timer(5, this);
@@ -68,14 +71,15 @@ public class GameBoard extends JPanel implements ActionListener {
             }
         }
 
-//        if(room.getDoors() != null ) {
-//            for (Door d : room.getDoors()) {
-//                g2d.drawImage(d.getImage(), d.getX(), d.getY(), this);
-//            }
-//        }
-
-        for (IWorldObject o : room.getObjects()) {
-            drawHitbox(g2d, o);
+        if(room.getDoors() != null ) {
+            for (Door d : room.getDoors()) {
+                g2d.drawImage(d.getImage(), d.getX(), d.getY(), this);
+            }
+        }
+        if(room.getObjects() != null) {
+            for (IWorldObject o : room.getObjects()) {
+                drawHitbox(g2d, o);
+            }
         }
 
         g2d.drawImage(player.getImage(), player.getX(), player.getY(), this);

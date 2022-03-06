@@ -1,9 +1,12 @@
 // Contains populated room objects, seperated for cleanliness.
 public class Rooms {
-    public static final Room PARK = new Room("Park","A lovely park","assets/park.png",
-            new Suspect[]{Suspect.JON}, new Item[]{Item.knife}, new IWorldObject[]{}, null);
-    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png",
-            null, null, new IWorldObject[]{}, null);
+
+
+
+//    public static final Room PARK = new Room("Park","A lovely park","assets/park.png",
+//            new Suspect[]{Suspect.JON}, new Item[]{Item.knife}, new IWorldObject[]{}, null);
+//    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png",
+//            null, null, new IWorldObject[]{}, null);
 
     // Lab Table collisions
     private static final CollisionObject topLeft = new CollisionObject(147, 0, 74,365);
@@ -24,7 +27,12 @@ public class Rooms {
             secondRight, farRight, bottomFirst, bottomSecond, leftFirst, leftSecond, centralTop,
             centralBottom};
 
-    public static final Room LABS = new Room("Labs","The wonderful Jack Cole labs.","assets/lab" +
-            ".png", new Suspect[]{Suspect.JON}, null, labsObjects,  new Door[]{new Door(1100, 0, BEACH), new Door(0,720, PARK)});
+
+
+    public static Room LABS = new Room("Labs", "The wonderful Jack Cole labs.", "assets/lab" +
+            ".png", new Suspect[]{Suspect.JON}, new Item[]{Weapon.MOUSE_CABLE}, labsObjects);
+    public static Room KITCHEN = new Room("Kitchen", "The kitchen/lobby hybrid that meets you when you enter Jack Cole.",
+            "assets/kitchen.png", new Suspect[]{Suspect.RUTH, Suspect.OZ}, new Item[]{Weapon.KNIFE, Weapon.PLASTIC_BAG}, null);
+
 
 }

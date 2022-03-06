@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PlayerMoveable implements IWorldObject {
 
@@ -59,9 +58,10 @@ public class PlayerMoveable implements IWorldObject {
             for (Door d : board.getRoom().getDoors()) {
                 if (x >= d.getX() - 50 && x <= d.getX() + 50) {
                     if (y >= d.getY() - 50 && y <= d.getY() + 50) {
-                        Room holder = d.getRoom();
-                        board.setRoom(holder);
-                        board.getRoom().roomDesc(Test.box);
+                        board.setRoom(d.getRoom());
+                        board.getRoom().roomDesc(Main.box);
+                        x = d.getExitX();
+                        y = d.getExitY();
                         return;
 
                     }
@@ -73,7 +73,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-                        s.startDialogue(Test.box);
+                        s.startDialogue(Main.box);
                         return;
 
                     }
@@ -88,7 +88,7 @@ public class PlayerMoveable implements IWorldObject {
                     if (y >= i.getY() - 20 && y <= i.getY() + 20) {
                         inventory.add(i);
                         board.getRoom().removeItem(i);
-                        Test.box.enterText("Added " + i.getName() + " to inventory.");
+                        Main.box.enterText("Added " + i.getName() + " to inventory.");
                         return;
 
                     }
@@ -107,12 +107,12 @@ public class PlayerMoveable implements IWorldObject {
             sb.append("4. Cereal first, or milk first?<br>");
         }
         sb.append("</html>");
-        Test.box.enterText(sb.toString());
+        Main.box.enterText(sb.toString());
     }
 
     public void checkInventory() {
         if(inventory.size() == 0){
-            Test.box.enterText("Inventory is currently empty.");
+            Main.box.enterText("Inventory is currently empty.");
             return;
         }
         StringBuilder sb = new StringBuilder();
@@ -127,7 +127,7 @@ public class PlayerMoveable implements IWorldObject {
         }
         sb.append("</html>");
         String invText = sb.toString();
-        Test.box.enterText(invText);
+        Main.box.enterText(invText);
     }
 
     public void questionOne() {
@@ -135,7 +135,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-                        s.q1Dialogue(Test.box);
+                        s.q1Dialogue(Main.box);
                         return;
 
                     }
@@ -149,7 +149,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-                        s.q2Dialogue(Test.box);
+                        s.q2Dialogue(Main.box);
                         return;
 
                     }
@@ -163,7 +163,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-                        s.q3Dialogue(Test.box);
+                        s.q3Dialogue(Main.box);
                         return;
 
                     }
@@ -178,7 +178,7 @@ public class PlayerMoveable implements IWorldObject {
             for (Suspect s : board.getRoom().getSuspects()) {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
-                        s.q4Dialogue(Test.box);
+                        s.q4Dialogue(Main.box);
                         return;
 
                     }

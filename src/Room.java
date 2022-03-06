@@ -18,7 +18,7 @@ public class Room {
     private Image image;
 
     public Room(String name, String description, String image, Suspect[] suspects,
-                Item[] items, IWorldObject[] objects, Door[] doors) {
+                Item[] items, IWorldObject[] objects) {
         this.objects = objects;
         this.name = name;
         this.description = description;
@@ -26,6 +26,14 @@ public class Room {
         this.image = ii.getImage().getScaledInstance(1200,1000,4);
         this.suspects = suspects;
         inventory = items;
+        this.doors = doors;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setDoors(Door[] doors) {
         this.doors = doors;
     }
 

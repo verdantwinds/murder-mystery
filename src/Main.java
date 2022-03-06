@@ -1,15 +1,13 @@
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 import java.awt.*;
 
-public class Test extends JFrame {
+public class Main extends JFrame {
 
     public static GuiDialogueBox box;
 
 
 
-    public Test() {
+    public Main() {
 //        JPanel main = new JPanel(new GridBagLayout());
 //        main.setBackground(Color.gray);
 //
@@ -46,6 +44,6 @@ public class Test extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Test();
+        new Main();
     }
 }

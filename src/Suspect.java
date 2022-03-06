@@ -1,8 +1,8 @@
 public class Suspect extends Person {
 
-    public static final Suspect JON = new Suspect("Jon Lewis","Head of School", 525,50,"assets/jon.png",false);
-    public static final Suspect OZ = new Suspect("Özgür Akgün","Lecturer", 800,500,"assets/oz.png",false);
-    public static final Suspect RUTH = new Suspect("Ruth Hoffmann","Lecturer", 800,500,"assets/ruth.png",false);
+    public static final Suspect JON = new Suspect("Jon Lewis","Head of School", 525,50,"assets/jon.png",true);
+    public static final Suspect OZ = new Suspect("Özgür Akgün","Lecturer", 100,650,"assets/oz.png",false);
+    public static final Suspect RUTH = new Suspect("Ruth Hoffmann","Lecturer", 1000,500,"assets/ruth.png",false);
     public static final Suspect TRISTAN = new Suspect("Tristan Henderson","Lecturer", 800,500,"assets/tristan.png",false);
     public static final Suspect SALEEM = new Suspect("Saleem Bhatti","Professor", 800,500,"assets/saleem.png",false);
     public static final Suspect IAN = new Suspect("Ian Gent","Professor", 800,500,"assets/ian.png",false);
@@ -23,25 +23,25 @@ public class Suspect extends Person {
     public void startDialogue(GuiDialogueBox box){
         switch (name){
             case "Jon Lewis":
-                box.enterText("oooooooooggggh my name is jon lewis i love the weather");
+                box.enterText("Jon Lewis: oooooooooggggh my name is jon lewis i love the weather");
                 break;
             case "Özgür Akgün":
-                box.enterText("wagwan i am oz ");
+                box.enterText("Özgür Akgün: wagwan i am oz ");
                 break;
             case "Ruth Hoffmann":
-                box.enterText("hi, it's ruth");
+                box.enterText("Ruth Hoffmann: hi, it's ruth");
                 break;
             case "Tristan Henderson":
-                box.enterText("i'm tristan and windows suckz");
+                box.enterText("Tristan Henderson: i'm tristan and windows suckz");
                 break;
             case "Saleem Bhatti":
-                box.enterText("it's saleem! ");
+                box.enterText("Saleem Bhatti: it's papa saleem! ");
                 break;
             case "Ian Gent":
-                box.enterText("yo yo yo it's ian");
+                box.enterText("Ian Gent: yo yo yo it's ian");
                 break;
             case "Edwin Brady":
-                box.enterText("i'm edwin - haskell4thewin");
+                box.enterText("Edwin Brady: i'm edwin - haskell4thewin");
                 break;
         }
 
@@ -200,4 +200,6 @@ public class Suspect extends Person {
                 }
         }
     }
+
+
 }
