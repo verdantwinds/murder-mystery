@@ -57,5 +57,6 @@ public class Rooms {
     public static final Room VERTICAL_HALL = new Room("Vertical hallway","The hallway that connects you to the kitchen, Jon's office and another hallway.",
             "assets/vertical_hall.png",null,null,null);
 
+    public static final Room JON_OFFICE = new Room("Jon's office","Jon's magnificent office.", "assets/jon_office.png",null,null,null);
 
 }
