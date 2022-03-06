@@ -405,7 +405,6 @@ public class PlayerMoveable implements IWorldObject {
         }
 
         if(key == KeyEvent.VK_6 ) {
-            System.out.println("press 6");
             if(accuse && !correctSuspect && sus.contains(Suspect.JON)){
                 accuseSuspect(6);
             }
