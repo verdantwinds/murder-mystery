@@ -50,30 +50,61 @@ public class Suspect extends Person {
     public void q1Dialogue(GuiDialogueBox box){
         switch (name){
             case "Jon Lewis":
-                if (isMurderer) {
-                    box.enterText("Uhm, I was in my office doing work.");
+                if (!isMurderer) {
+                    box.enterText("Uhm, I was in my office doing work. There was weather to be admired.");
                     break;
                 } else {
-                    box.enterText("Uhm, I think I was in my office doing some work.");
+                    box.enterText("Uhm, I think I was in my office doing some work. The weather was a bit dreary.");
                     break;
                 }
             case "Özgür Akgün":
-                box.enterText("wagwan i am oz ");
+                box.enterText("I wasn't near where it happened, I didn't hear about what happened until an hour ago.");
                 break;
             case "Ruth Hoffmann":
-                box.enterText("hi, it's ruth");
+                box.enterText("I was in my office, I didn't even know what was happening.");
                 break;
             case "Tristan Henderson":
-                box.enterText("i'm tristan and windows suckz");
+                box.enterText("I was smashing windows in John Honey, I didn't even hear anything.");
                 break;
             case "Saleem Bhatti":
-                box.enterText("it's saleem! ");
+                box.enterText("I was campaigning for the adoption of IPv6 in my office.");
                 break;
             case "Ian Gent":
-                box.enterText("yo yo yo it's ian");
+                box.enterText("Squatting dramatically by the pier if you have to know >:(");
                 break;
             case "Edwin Brady":
-                box.enterText("i'm edwin - haskell4thewin");
+                box.enterText("Definitely not Haskilling anyone, I promise.");
+                break;
+        }
+    }
+
+    public void q2Dialogue(GuiDialogueBox box){
+        switch (name){
+            case "Jon Lewis":
+                if (isMurderer) {
+                    box.enterText("I haven't really looked, fine, I suppose?");
+                    break;
+                } else {
+                    box.enterText("Oh the weather is great today! It's lovely to see the sun out in St Andrews.");
+                    break;
+                }
+            case "Özgür Akgün":
+                box.enterText("Not too bad, but you can never tell with St Andrews.");
+                break;
+            case "Ruth Hoffmann":
+                box.enterText("Not too bad, typical St Andrews weather. There's more important things to talk about though.");
+                break;
+            case "Tristan Henderson":
+                box.enterText("I wasn't really paying attention on my way in, which is a good thing I guess.");
+                break;
+            case "Saleem Bhatti":
+                box.enterText("Pretty good! Can't complain all considered.");
+                break;
+            case "Ian Gent":
+                box.enterText("Perfect squatting weather if I've ever seen it!");
+                break;
+            case "Edwin Brady":
+                box.enterText("Not bad at all. Not exactly what we should be talking about is it?");
                 break;
         }
 
