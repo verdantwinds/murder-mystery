@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class GameBoard extends JPanel implements ActionListener {
@@ -35,7 +37,20 @@ public class GameBoard extends JPanel implements ActionListener {
 
         room.roomDesc(Main.box);
 
+        GameBoard that = this;
+        addMouseListener(
+                new MouseAdapter() {
+                    //define functionality when mouse is clicked
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        Point p = e.getPoint();
+                        SwingUtilities.convertPointFromScreen(e.getPoint(),
+                                that);
+                        System.out.println(p);
+                    }
+                }
 
+        );
 
         timer = new Timer(5, this);
         timer.start();

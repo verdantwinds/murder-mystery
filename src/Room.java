@@ -27,6 +27,8 @@ public class Room {
         this.suspects = suspects;
         inventory = items;
         this.doors = doors;
+
+
     }
 
     public String getName() {

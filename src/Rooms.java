@@ -31,8 +31,25 @@ public class Rooms {
 
     public static Room LABS = new Room("Labs", "The wonderful Jack Cole labs.", "assets/lab" +
             ".png", new Suspect[]{Suspect.JON}, new Item[]{Weapon.MOUSE_CABLE}, labsObjects);
+
+    // Kitchen collisions
+    private static final CollisionObject kitchenTop = new CollisionObject(240, 195, 120,95);
+    private static final CollisionObject kitchenTopBar = new CollisionObject(128, 285, 346,35);
+    private static final CollisionObject kitchenCounter = new CollisionObject(125, 415, 350,115);
+    private static final CollisionObject kitchenSofa = new CollisionObject(158, 526, 270,97);
+
+    private static final CollisionObject tableOne = new CollisionObject(25, 785, 55,61);
+    private static final CollisionObject tableTwo = new CollisionObject(147, 785, 55,61);
+    private static final CollisionObject tableThree = new CollisionObject(270, 785, 55,61);
+
+    private static final CollisionObject bigTable = new CollisionObject(369, 746, 315,100);
+    private static final CollisionObject kitchenWall = new CollisionObject(733, 355, 145,488);
+
     public static Room KITCHEN = new Room("Kitchen", "The kitchen/lobby hybrid that meets you when you enter Jack Cole.",
-            "assets/kitchen.png", new Suspect[]{Suspect.RUTH, Suspect.OZ}, new Item[]{Weapon.KNIFE, Weapon.PLASTIC_BAG}, null);
+            "assets/kitchen.png", new Suspect[]{Suspect.RUTH, Suspect.OZ},
+            new Item[]{Weapon.KNIFE, Weapon.PLASTIC_BAG}, new IWorldObject[] {kitchenTop,
+            kitchenCounter, kitchenSofa, tableOne, tableTwo, tableThree, bigTable, kitchenWall,
+            kitchenTopBar});
 
 
 }
