@@ -13,8 +13,8 @@ public class PlayerMoveable implements IWorldObject {
     private Image image;
     private GameBoard board;
 
-    private final int height = 100;
-    private final int width = 100;
+    private final int height = 80;
+    private final int width = 80;
 
     private ArrayList<Item> inventory;
 
