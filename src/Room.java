@@ -60,7 +60,7 @@ public class Room {
     }
 
     public void roomDesc(GuiDialogueBox box){
-        box.enterText(description+"<br>[E] to Interact | [Q] for Questions | [I] for Inventory");
+        box.enterText(description+"<br>[E] to Interact/Open Door | [Q] for Questions | [I] for Inventory");
     }
 
     public Item[] getInventory() {

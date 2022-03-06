@@ -103,6 +103,7 @@ public class Main extends JFrame {
         ImageIcon ii = new ImageIcon("../assets/win.png");
         remove(main);
         JPanel winP = new JPanel();
+        winP.setBackground(Color.RED);
         JLabel win = new JLabel(ii);
         winP.add(win);
         add(winP);

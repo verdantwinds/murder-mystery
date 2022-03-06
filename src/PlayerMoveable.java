@@ -19,6 +19,8 @@ public class PlayerMoveable implements IWorldObject {
     private boolean correctSuspect = false;
     private boolean correctWeapon = false;
 
+    private ArrayList<Suspect> sus;
+
     private ArrayList<Item> inventory;
 
     public PlayerMoveable(GameBoard board) {
@@ -26,6 +28,7 @@ public class PlayerMoveable implements IWorldObject {
         image = ii.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
         x = 550;
         y = 300;
+        sus = new ArrayList<>();
         inventory = new ArrayList<>();
         this.board = board;
 
@@ -84,6 +87,9 @@ public class PlayerMoveable implements IWorldObject {
                 if (x >= s.getX() -150 && x <= s.getX() + 150 ) {
                     if (y >= s.getY() -150&& y <= s.getY() + 150) {
                         s.startDialogue(Main.box);
+                        if(!sus.contains(s)){
+                            sus.add(s);
+                        }
                         return;
 
                     }
@@ -130,7 +136,7 @@ public class PlayerMoveable implements IWorldObject {
             return;
         }
         StringBuilder sb = new StringBuilder();
-        sb.append("<html>Inventory: ");
+        sb.append("Inventory: ");
         for(int i = 0; i < inventory.size(); i++){
             if (i == inventory.size() - 1){
                 sb.append(inventory.get(i).getDescription());
@@ -141,7 +147,6 @@ public class PlayerMoveable implements IWorldObject {
             }
 
         }
-        sb.append("</html>");
         String invText = sb.toString();
         Main.box.enterText(invText);
     }
@@ -150,16 +155,64 @@ public class PlayerMoveable implements IWorldObject {
         accuse = true;
         if(board.getRoom().equals(Rooms.SUS_ROOM)) {
             if(!correctSuspect) {
-                Main.box.enterText("Choose a suspect: 1. Ruth 2. Özgür 3. Saleem 4. Ian 5. Edwin. 6. Jon 7. Tristan");
+                StringBuilder sb = new StringBuilder();
+                if(sus.size() == 0){
+                    sb.append("Try talking to people you see before trying to make an accusation...");
+                } else {
+                    sb.append("Choose a suspect: ");
+                }
+                if(sus.contains(Suspect.RUTH)){
+                    sb.append("1. Ruth ");
+                }
+                if(sus.contains(Suspect.OZ)){
+                    sb.append("2. Özgür ");
+                }
+                if(sus.contains(Suspect.SALEEM)){
+                    sb.append("3. Saleem ");
+                }
+                if(sus.contains(Suspect.IAN)) {
+                    sb.append("4. Ian ");
+                }
+                if(sus.contains(Suspect.EDWIN)) {
+                    sb.append("5. Edwin ");
+                }
+                if(sus.contains(Suspect.JON)){
+                    sb.append("6. Jon ");
+                }
+                if(sus.contains(Suspect.TRISTAN)){
+                    sb.append("7. Tristan");
+                }
+                Main.box.enterText(sb.toString());
             } else {
-                Main.box.enterText("Choose a weapon: 1. Bleach 2. Mouse Cable 3. Pen 4. Plastic Bag 5. Knife");
+                StringBuilder sb = new StringBuilder();
+
+                if(inventory.size() == 0){
+                    sb.append("Look around for possible murder weapons...");
+                } else {
+                    sb.append("Choose a weapon: ");
+                }
+                if(inventory.contains(Weapon.BLEACH)){
+                    sb.append("1. Bleach ");
+                }
+                if(inventory.contains(Weapon.MOUSE_CABLE)) {
+                    sb.append("2. Mouse Cable ");
+                }
+                if(inventory.contains(Weapon.PEN)) {
+                    sb.append("3. Pen ");
+                }
+                if(inventory.contains(Weapon.PLASTIC_BAG)) {
+                    sb.append("4. Plastic Bag ");
+                }
+                if(inventory.contains(Weapon.KNIFE)){
+                    sb.append("5. Knife ");
+                }
+                Main.box.enterText(sb.toString());
             }
         }
     }
 
     public void accuseSuspect(int i) {
         if(!correctSuspect){
-            System.out.println("right place");
             if(i == 6) {
                 Main.box.enterText("Correct! Jon is the murderer... but how did he do it? Press SPACE again to choose...");
                 correctSuspect = true;
@@ -183,6 +236,9 @@ public class PlayerMoveable implements IWorldObject {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
                         s.q1Dialogue(Main.box);
+                        if(!sus.contains(s)){
+                            sus.add(s);
+                        }
                         return;
 
                     }
@@ -197,6 +253,9 @@ public class PlayerMoveable implements IWorldObject {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
                         s.q2Dialogue(Main.box);
+                        if(!sus.contains(s)){
+                            sus.add(s);
+                        }
                         return;
 
                     }
@@ -211,6 +270,9 @@ public class PlayerMoveable implements IWorldObject {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
                         s.q3Dialogue(Main.box);
+                        if(!sus.contains(s)){
+                            sus.add(s);
+                        }
                         return;
 
                     }
@@ -226,6 +288,9 @@ public class PlayerMoveable implements IWorldObject {
                 if (x >= s.getX() - 100 && x <= s.getX() + 100) {
                     if (y >= s.getY() - 100 && y <= s.getY() + 100) {
                         s.q4Dialogue(Main.box);
+                        if(!sus.contains(s)){
+                            sus.add(s);
+                        }
                         return;
 
                     }
@@ -269,7 +334,14 @@ public class PlayerMoveable implements IWorldObject {
 
         if(key == KeyEvent.VK_1) {
             if(accuse){
-                accuseSuspect(1);
+                if(correctSuspect){
+                    if(inventory.contains(Weapon.BLEACH)) {
+                        accuseSuspect(1);
+                    }
+                } else if(sus.contains(Suspect.RUTH)){
+                    accuseSuspect(1);
+                }
+
             } else {
                 questionOne();
             }
@@ -277,7 +349,13 @@ public class PlayerMoveable implements IWorldObject {
 
         if(key == KeyEvent.VK_2) {
             if(accuse){
-                accuseSuspect(2);
+                if(correctSuspect){
+                    if(inventory.contains(Weapon.MOUSE_CABLE)){
+                        accuseSuspect(2);
+                    }
+                } else if(sus.contains(Suspect.OZ)){
+                    accuseSuspect(2);
+                }
             } else {
 
                 questionTwo();
@@ -286,7 +364,14 @@ public class PlayerMoveable implements IWorldObject {
 
         if(key == KeyEvent.VK_3) {
             if(accuse){
-                accuseSuspect(3);
+                if(correctSuspect){
+                    if(inventory.contains(Weapon.PEN)){
+                        accuseSuspect(3);
+                    }
+                } else if(sus.contains(Suspect.SALEEM)){
+                    accuseSuspect(3);
+                }
+
             } else {
                 questionThree();
             }
@@ -294,7 +379,13 @@ public class PlayerMoveable implements IWorldObject {
 
         if(key == KeyEvent.VK_4) {
             if(accuse){
-                accuseSuspect(4);
+                if(correctSuspect){
+                    if(inventory.contains(Weapon.PLASTIC_BAG)) {
+                        accuseSuspect(4);
+                    }
+                } else if(sus.contains(Suspect.IAN)){
+                    accuseSuspect(4);
+                }
             } else {
                 questionFour();
             }
@@ -302,19 +393,26 @@ public class PlayerMoveable implements IWorldObject {
 
         if(key == KeyEvent.VK_5 ) {
             if(accuse){
-                accuseSuspect(5);
+                if(correctSuspect) {
+                    if(inventory.contains(Weapon.KNIFE)) {
+                        accuseSuspect(5);
+                    }
+                } else if(sus.contains(Suspect.EDWIN)){
+                    accuseSuspect(5);
+                }
+
             }
         }
 
         if(key == KeyEvent.VK_6 ) {
             System.out.println("press 6");
-            if(accuse && !correctSuspect){
+            if(accuse && !correctSuspect && sus.contains(Suspect.JON)){
                 accuseSuspect(6);
             }
         }
 
         if(key == KeyEvent.VK_7) {
-            if(accuse && !correctSuspect){
+            if(accuse && !correctSuspect && sus.contains(Suspect.TRISTAN)){
                 accuseSuspect(7);
             }
         }
