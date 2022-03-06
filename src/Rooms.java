@@ -89,12 +89,12 @@ public class Rooms {
     private static final CollisionObject susButton = new CollisionObject(200, 310, 375,275);
     private static final CollisionObject susTop = new CollisionObject(900, 0, 300,320);
     private static final CollisionObject susBottom = new CollisionObject(900, 570, 300,280);
-    public static final Room SUS_ROOM = new Room("Meeting room", "A suspicious meeting room. Press SPACE to start an accusation!",
+    public static final Room SUS_ROOM = new Room("Meeting room", "A suspicious meeting room. [SPACE] to start an accusation!",
             "assets/sus_room.png", null,new Item[]{Item.cereal, Victim.Tamzid},new IWorldObject[]{susBottom, susTop, susButton});
 
     private static final CollisionObject outsideLeft = new CollisionObject(0, 0, 220,700);
     private static final CollisionObject outsideLeftBottom = new CollisionObject(0, 545, 287,155);
-    public static final Room OUTSIDE = new Room("Outside","The area outside of the Jack Cole",
+    public static final Room OUTSIDE = new Room("Outside","The area outside of the Jack Cole Building.",
             "assets/entrance.png",new Suspect[]{Suspect.TRISTAN},new Item[]{Weapon.BLEACH}, new IWorldObject[]{outsideLeft, outsideLeftBottom});
 
 

@@ -110,13 +110,12 @@ public class PlayerMoveable implements IWorldObject {
 
     public void askQuestions() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<html>1. Where were you at the time of the murder?<br>");
+        sb.append("1. Where were you at the time of the murder?<br>");
         sb.append("2. What's the weather like today?<br>");
         sb.append("3. What was your relationship to the victim like?<br>");
         if(inventory.contains(Item.cereal)){
             sb.append("4. Cereal first, or milk first?<br>");
         }
-        sb.append("</html>");
         Main.box.enterText(sb.toString());
     }
 

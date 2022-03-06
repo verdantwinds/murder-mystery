@@ -36,7 +36,7 @@ public class GuiDialogueBox extends JPanel {
     public void enterText (String text) {
         // The last character isn't displayed, and altering the end conditions causes an error
         // I can't be bothered fixing it, so we'll add an extra character to the end instead.
-        String modifiedText = text + " ";
+        String modifiedText = text + "</html>";
 
         // Handle call before prev. done
         if (textUpdater != null && textUpdater.isRunning()) {
@@ -48,7 +48,7 @@ public class GuiDialogueBox extends JPanel {
             String currText = "";
             int currentPos = 0;
         };
-
+        ref.currText = "<html>";
         textUpdater = new Timer(UPDATE_DELAY, e -> {
             if (ref.currentPos >= modifiedText.length()) {
                 textUpdater.stop();
