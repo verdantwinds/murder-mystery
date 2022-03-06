@@ -15,6 +15,10 @@ public class PlayerMoveable implements IWorldObject {
     private final int height = 80;
     private final int width = 80;
 
+    private boolean accuse = false;
+    private boolean correctSuspect = false;
+    private boolean correctWeapon = false;
+
     private ArrayList<Item> inventory;
 
     public PlayerMoveable(GameBoard board) {
@@ -62,6 +66,7 @@ public class PlayerMoveable implements IWorldObject {
                         board.getRoom().roomDesc(Main.box);
                         x = d.getExitX();
                         y = d.getExitY();
+                        accuse = false;
                         return;
 
                     }
@@ -71,8 +76,8 @@ public class PlayerMoveable implements IWorldObject {
 
         if(board.getRoom().getSuspects() != null) {
             for (Suspect s : board.getRoom().getSuspects()) {
-                if (x >= s.getX() - 100 && x <= s.getX() + 100) {
-                    if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+                if (x >= s.getX() -150 && x <= s.getX() + 150 ) {
+                    if (y >= s.getY() -150&& y <= s.getY() + 150) {
                         s.startDialogue(Main.box);
                         return;
 
@@ -84,11 +89,16 @@ public class PlayerMoveable implements IWorldObject {
         if(board.getRoom().getInventory() != null) {
             for (Item i : board.getRoom().getInventory()) {
 
-                if (x >= i.getX() - 20 && x <= i.getX() + 20) {
-                    if (y >= i.getY() - 20 && y <= i.getY() + 20) {
-                        inventory.add(i);
-                        board.getRoom().removeItem(i);
-                        Main.box.enterText("Added " + i.getName() + " to inventory.");
+                if (x >= i.getX() - 25 && x <= i.getX() + 100) {
+                    if (y >= i.getY() -25 && y <= i.getY() + 100) {
+                        if(i instanceof Victim) {
+                            System.out.println("victim");
+                            Main.box.enterText(i.getDescription());
+                        } else {
+                            inventory.add(i);
+                            board.getRoom().removeItem(i);
+                            Main.box.enterText("Added " + i.getName() + " to inventory.");
+                        }
                         return;
 
                     }
@@ -119,15 +129,48 @@ public class PlayerMoveable implements IWorldObject {
         sb.append("<html>Inventory: ");
         for(int i = 0; i < inventory.size(); i++){
             if (i == inventory.size() - 1){
-                sb.append(inventory.get(i).getDescription()).append(".");
+                sb.append(inventory.get(i).getDescription());
+            } else if(i%2 == 0){
+                sb.append(inventory.get(i).getDescription()).append("<br>");
             } else {
-                sb.append(inventory.get(i).getDescription()).append(", ");
+                sb.append(inventory.get(i).getDescription()).append(" ");
             }
 
         }
         sb.append("</html>");
         String invText = sb.toString();
         Main.box.enterText(invText);
+    }
+
+    public void accusation() {
+        accuse = true;
+        if(board.getRoom().equals(Rooms.SUS_ROOM)) {
+            if(!correctSuspect) {
+                Main.box.enterText("Choose a suspect: 1. Ruth 2. Özgür 3. Saleem 4. Ian 5. Edwin. 6. Jon 7. Tristan");
+            } else {
+                Main.box.enterText("Choose a weapon: 1. Bleach 2. Mouse Cable 3. Pen 4. Plastic Bag 5. Knife");
+            }
+        }
+    }
+
+    public void accuseSuspect(int i) {
+        if(!correctSuspect){
+            System.out.println("right place");
+            if(i == 6) {
+                Main.box.enterText("Correct! Jon is the murderer... but how did he do it? Press SPACE again to choose...");
+                correctSuspect = true;
+            } else {
+                Main.box.enterText("That doesn't seem to add up...");
+            }
+        }
+         else {
+            if(i == 2) {
+                Main.box.enterText("The mouse cable! That makes perfect sense!");
+                correctWeapon = true;
+            } else {
+                Main.box.enterText("That doesn't seem to add up...");
+            }
+        }
     }
 
     public void questionOne() {
@@ -216,23 +259,64 @@ public class PlayerMoveable implements IWorldObject {
         }
 
         if(key == KeyEvent.VK_I) {
+
             checkInventory();
         }
 
         if(key == KeyEvent.VK_1) {
-            questionOne();
+            if(accuse){
+                accuseSuspect(1);
+            } else {
+                questionOne();
+            }
         }
 
         if(key == KeyEvent.VK_2) {
-            questionTwo();
+            if(accuse){
+                accuseSuspect(2);
+            } else {
+
+                questionTwo();
+            }
         }
 
         if(key == KeyEvent.VK_3) {
-            questionThree();
+            if(accuse){
+                accuseSuspect(3);
+            } else {
+                questionThree();
+            }
         }
 
         if(key == KeyEvent.VK_4) {
-            questionFour();
+            if(accuse){
+                accuseSuspect(4);
+            } else {
+                questionFour();
+            }
+        }
+
+        if(key == KeyEvent.VK_5 ) {
+            if(accuse){
+                accuseSuspect(5);
+            }
+        }
+
+        if(key == KeyEvent.VK_6 ) {
+            System.out.println("press 6");
+            if(accuse && !correctSuspect){
+                accuseSuspect(6);
+            }
+        }
+
+        if(key == KeyEvent.VK_7) {
+            if(accuse && !correctSuspect){
+                accuseSuspect(7);
+            }
+        }
+
+        if(key == KeyEvent.VK_SPACE) {
+            accusation();
         }
     }
 
@@ -254,6 +338,10 @@ public class PlayerMoveable implements IWorldObject {
         if (key == KeyEvent.VK_DOWN|| key == KeyEvent.VK_S ) {
             dy = 0;
         }
+    }
+
+    public boolean checkWin() {
+        return correctSuspect && correctWeapon;
     }
 
     @Override

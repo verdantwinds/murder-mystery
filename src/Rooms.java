@@ -9,6 +9,8 @@ public class Rooms {
 //    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png",
 //            null, null, new IWorldObject[]{}, null);
 
+
+
     // Lab Table collisions
     private static final CollisionObject topLeft = new CollisionObject(147, 0, 74,365);
     private static final CollisionObject secondLeft = new CollisionObject(410, 0, 74,365);
@@ -31,7 +33,7 @@ public class Rooms {
 
 
     public static Room LABS = new Room("Labs", "The wonderful Jack Cole labs.", "assets/lab" +
-            ".png", new Suspect[]{Suspect.JON}, new Item[]{Weapon.MOUSE_CABLE}, labsObjects);
+            ".png", new Suspect[]{Suspect.IAN}, new Item[]{Weapon.MOUSE_CABLE}, labsObjects);
 
     // Kitchen collisions
     private static final CollisionObject kitchenTop = new CollisionObject(240, 195, 120,95);
@@ -67,7 +69,7 @@ public class Rooms {
     private static final CollisionObject vRight = new CollisionObject(730, 0, 465,845);
 
     public static final Room VERTICAL_HALL = new Room("Vertical hallway","The hallway that connects you to the kitchen, Jon's office and another hallway.",
-            "assets/vertical_hall.png",null,null,new IWorldObject[]{vLeftTop, vLeftBottom, vRight});
+            "assets/vertical_hall.png",new Suspect[]{Suspect.EDWIN},null,new IWorldObject[]{vLeftTop, vLeftBottom, vRight});
 
     private static final CollisionObject jLeft = new CollisionObject(0, 0, 70,850);
     private static final CollisionObject jTop = new CollisionObject(0, 0, 1200,150);
@@ -75,23 +77,25 @@ public class Rooms {
     private static final CollisionObject jBed = new CollisionObject(975, 500, 115,270);
     private static final CollisionObject jTable = new CollisionObject(90, 285, 230,85);
     public static final Room JON_OFFICE = new Room("Jon's office","Jon's magnificent office.",
-            "assets/jon_office.png",null,null,new IWorldObject[]{jLeft, jTop, jRight, jBed, jTable});
+            "assets/jon_office.png",new Suspect[]{Suspect.JON},new Item[]{Weapon.PEN},new IWorldObject[]{jLeft, jTop, jRight, jBed, jTable});
+
 
     private static final CollisionObject westLeft = new CollisionObject(0, 0, 470,850);
     private static final CollisionObject westRightTop = new CollisionObject(640, 0, 560,450);
     private static final CollisionObject westRightBottom = new CollisionObject(800, 0, 200,850);
     public static final Room WEST_HALL = new Room("West hall","The west hall that connects you to the kitchen, the meeting room, and another hallway.",
-            "assets/west_hall.png",null,null,new IWorldObject[]{westLeft, westRightTop, westRightBottom});
+            "assets/west_hall.png",new Suspect[]{Suspect.SALEEM},null,new IWorldObject[]{westLeft, westRightTop, westRightBottom});
 
     private static final CollisionObject susButton = new CollisionObject(200, 310, 375,275);
     private static final CollisionObject susTop = new CollisionObject(900, 0, 300,320);
     private static final CollisionObject susBottom = new CollisionObject(900, 570, 300,280);
-    public static final Room SUS_ROOM = new Room("Meeting room", "A suspicious meeting room.",
-            "assets/sus_room.png", null,null,new IWorldObject[]{susBottom, susTop, susButton});
+    public static final Room SUS_ROOM = new Room("Meeting room", "A suspicious meeting room. Press SPACE to start an accusation!",
+            "assets/sus_room.png", null,new Item[]{Item.cereal, Victim.Tamzid},new IWorldObject[]{susBottom, susTop, susButton});
 
     private static final CollisionObject outsideLeft = new CollisionObject(0, 0, 220,700);
     private static final CollisionObject outsideLeftBottom = new CollisionObject(0, 545, 287,155);
     public static final Room OUTSIDE = new Room("Outside","The area outside of the Jack Cole",
-            "assets/outside.png",null,null, new IWorldObject[]{outsideLeft, outsideLeftBottom});
+            "assets/entrance.png",new Suspect[]{Suspect.TRISTAN},new Item[]{Weapon.BLEACH}, new IWorldObject[]{outsideLeft, outsideLeftBottom});
+
 
 }

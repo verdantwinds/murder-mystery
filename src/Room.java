@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,7 +26,11 @@ public class Room {
         this.objects = objects;
         this.name = name;
         this.description = description;
-        ImageIcon ii = new ImageIcon(image);
+        BufferedImage img = null;
+        try {
+         img = ImageIO.read(new File(image));}
+        catch (IOException e) {};
+        ImageIcon ii = new ImageIcon(img);
         this.image = ii.getImage().getScaledInstance(1200,1000,4);
         this.suspects = suspects;
         inventory = items;
