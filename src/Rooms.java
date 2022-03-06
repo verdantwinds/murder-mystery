@@ -52,11 +52,29 @@ public class Rooms {
             kitchenCounter, kitchenSofa, tableOne, tableTwo, tableThree, bigTable, kitchenWall,
             kitchenTopBar});
 
-    public static final Room UPPER_HALL = new Room("Upper hallway","The hallway that leads to other hallways, and the labs.",
-            "assets/upper_hall.png", null, new Item[]{Item.CARD}, null);
-    public static final Room VERTICAL_HALL = new Room("Vertical hallway","The hallway that connects you to the kitchen, Jon's office and another hallway.",
-            "assets/vertical_hall.png",null,null,null);
+    // Upper hall collisions
 
-    public static final Room JON_OFFICE = new Room("Jon's office","Jon's magnificent office.", "assets/jon_office.png",null,null,null);
+    private static final CollisionObject uTop = new CollisionObject(0, 0, 1200,250);
+    private static final CollisionObject uLeftBottom = new CollisionObject(0, 450, 620,390);
+    private static final CollisionObject uRightMid = new CollisionObject(0, 585, 1200,255);
+    private static final CollisionObject uRightBottom = new CollisionObject(780, 450, 420,390);
+    public static final Room UPPER_HALL = new Room("Upper hallway","The hallway that leads to other hallways, and the labs.",
+            "assets/upper_hall.png", null, new Item[]{Item.CARD},new IWorldObject[]{uTop,
+            uLeftBottom, uRightMid, uRightBottom});
+
+    private static final CollisionObject vLeftTop = new CollisionObject(0, 0, 400,845);
+    private static final CollisionObject vLeftBottom = new CollisionObject(0, 450, 565,395);
+    private static final CollisionObject vRight = new CollisionObject(730, 0, 465,845);
+
+    public static final Room VERTICAL_HALL = new Room("Vertical hallway","The hallway that connects you to the kitchen, Jon's office and another hallway.",
+            "assets/vertical_hall.png",null,null,new IWorldObject[]{vLeftTop, vLeftBottom, vRight});
+
+    private static final CollisionObject jLeft = new CollisionObject(0, 0, 70,850);
+    private static final CollisionObject jTop = new CollisionObject(0, 0, 1200,150);
+    private static final CollisionObject jRight = new CollisionObject(1110, 150, 80,850);
+    private static final CollisionObject jBed = new CollisionObject(975, 500, 115,270);
+    private static final CollisionObject jTable = new CollisionObject(90, 285, 230,85);
+    public static final Room JON_OFFICE = new Room("Jon's office","Jon's magnificent office.",
+            "assets/jon_office.png",null,null,new IWorldObject[]{jLeft, jTop, jRight, jBed, jTable});
 
 }
