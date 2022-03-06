@@ -46,4 +46,36 @@ public class Suspect extends Person {
         }
 
     }
+
+    public void q1Dialogue(GuiDialogueBox box){
+        switch (name){
+            case "Jon Lewis":
+                if (isMurderer) {
+                    box.enterText("Uhm, I was in my office doing work.");
+                    break;
+                } else {
+                    box.enterText("Uhm, I think I was in my office doing some work.");
+                    break;
+                }
+            case "Özgür Akgün":
+                box.enterText("wagwan i am oz ");
+                break;
+            case "Ruth Hoffmann":
+                box.enterText("hi, it's ruth");
+                break;
+            case "Tristan Henderson":
+                box.enterText("i'm tristan and windows suckz");
+                break;
+            case "Saleem Bhatti":
+                box.enterText("it's saleem! ");
+                break;
+            case "Ian Gent":
+                box.enterText("yo yo yo it's ian");
+                break;
+            case "Edwin Brady":
+                box.enterText("i'm edwin - haskell4thewin");
+                break;
+        }
+
+    }
 }
