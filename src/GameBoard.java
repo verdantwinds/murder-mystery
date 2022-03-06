@@ -31,13 +31,17 @@ public class GameBoard extends JPanel implements ActionListener {
         player = new PlayerMoveable(this);
 
 
-        Rooms.LABS.setDoors(new Door[]{new Door(1100, 0, 680,490, Rooms.UPPER_HALL), new Door(0, 720, 750,490, Rooms.KITCHEN)});
-        Rooms.KITCHEN.setDoors(new Door[]{new Door(740, 0,0, 720, Rooms.LABS), new Door(1050,0,600,790,Rooms.VERTICAL_HALL),
-        new Door(0,50,0,0,null), new Door(1120,700,0,0,null)});
-        Rooms.UPPER_HALL.setDoors(new Door[]{new Door(680,490,1100,0, Rooms.LABS), new Door(0,264,0,0,null), new Door(1150, 260,400,40,Rooms.VERTICAL_HALL)});
+        Rooms.LABS.setDoors(new Door[]{new Door(1100, 0, 680,490, Rooms.UPPER_HALL), new Door(0, 720, 740,10, Rooms.KITCHEN)});
+        Rooms.KITCHEN.setDoors(new Door[]{new Door(740, 0,0, 720, Rooms.LABS), new Door(1050,0,600,750,Rooms.VERTICAL_HALL),
+        new Door(0,50,750,730,Rooms.WEST_HALL), new Door(1120,700,244,281,Rooms.OUTSIDE)});
+        Rooms.UPPER_HALL.setDoors(new Door[]{new Door(680,490,1100,0, Rooms.LABS), new Door(0,264,510,10,Rooms.WEST_HALL), new Door(1150, 260,400,40,Rooms.VERTICAL_HALL)});
         Rooms.VERTICAL_HALL.setDoors(new Door[]{new Door(400,40,1100,260,Rooms.UPPER_HALL), new Door(690,160,520,750,Rooms.JON_OFFICE), new Door(600,790,1050,0,Rooms.KITCHEN)});
         this.room = Rooms.VERTICAL_HALL;
-        Rooms.JON_OFFICE.setDoors(new Door[]{new Door(520,790,690,160,Rooms.VERTICAL_HALL)});
+        Rooms.JON_OFFICE.setDoors(new Door[]{new Door(520,790,670,160,Rooms.VERTICAL_HALL)});
+        Rooms.WEST_HALL.setDoors(new Door[]{new Door(750,730,0,50, Rooms.KITCHEN), new Door(460,610,1100,400,Rooms.SUS_ROOM),
+        new Door(510,0,10,264,Rooms.UPPER_HALL)});
+        Rooms.SUS_ROOM.setDoors(new Door[]{new Door(1100,400,460,610, Rooms.WEST_HALL)});
+        Rooms.OUTSIDE.setDoors(new Door[]{new Door(219,274,1100,700, Rooms.KITCHEN)});
 
         room.roomDesc(Main.box);
 

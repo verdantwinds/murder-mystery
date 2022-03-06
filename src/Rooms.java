@@ -77,4 +77,9 @@ public class Rooms {
     public static final Room JON_OFFICE = new Room("Jon's office","Jon's magnificent office.",
             "assets/jon_office.png",null,null,new IWorldObject[]{jLeft, jTop, jRight, jBed, jTable});
 
+    public static final Room WEST_HALL = new Room("West hall","The west hall that connects you to the kitchen, the meeting room, and another hallway.",
+            "assets/west_hall.png",null,null,null);
+    public static final Room SUS_ROOM = new Room("Meeting room", "A suspicious meeting room.", "assets/sus_room.png", null,null,null);
+    public static final Room OUTSIDE = new Room("Outside","The area outside of the Jack Cole", "assets/outside.png",null,null, null);
+
 }
