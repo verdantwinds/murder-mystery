@@ -77,9 +77,21 @@ public class Rooms {
     public static final Room JON_OFFICE = new Room("Jon's office","Jon's magnificent office.",
             "assets/jon_office.png",null,null,new IWorldObject[]{jLeft, jTop, jRight, jBed, jTable});
 
+    private static final CollisionObject westLeft = new CollisionObject(0, 0, 470,850);
+    private static final CollisionObject westRightTop = new CollisionObject(640, 0, 560,450);
+    private static final CollisionObject westRightBottom = new CollisionObject(800, 0, 200,850);
     public static final Room WEST_HALL = new Room("West hall","The west hall that connects you to the kitchen, the meeting room, and another hallway.",
-            "assets/west_hall.png",null,null,null);
-    public static final Room SUS_ROOM = new Room("Meeting room", "A suspicious meeting room.", "assets/sus_room.png", null,null,null);
-    public static final Room OUTSIDE = new Room("Outside","The area outside of the Jack Cole", "assets/outside.png",null,null, null);
+            "assets/west_hall.png",null,null,new IWorldObject[]{westLeft, westRightTop, westRightBottom});
+
+    private static final CollisionObject susButton = new CollisionObject(200, 310, 375,275);
+    private static final CollisionObject susTop = new CollisionObject(900, 0, 300,320);
+    private static final CollisionObject susBottom = new CollisionObject(900, 570, 300,280);
+    public static final Room SUS_ROOM = new Room("Meeting room", "A suspicious meeting room.",
+            "assets/sus_room.png", null,null,new IWorldObject[]{susBottom, susTop, susButton});
+
+    private static final CollisionObject outsideLeft = new CollisionObject(0, 0, 220,700);
+    private static final CollisionObject outsideLeftBottom = new CollisionObject(0, 545, 287,155);
+    public static final Room OUTSIDE = new Room("Outside","The area outside of the Jack Cole",
+            "assets/outside.png",null,null, new IWorldObject[]{outsideLeft, outsideLeftBottom});
 
 }
