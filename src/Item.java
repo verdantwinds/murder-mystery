@@ -5,6 +5,7 @@ public class Item implements IWorldObject {
 
     public static final Item knife = new Item("Knife", "A sharp kitchen knife with a wooden handle", "./assets/Knife.png", true, 500,500);
     public static final Item cereal = new Item("Cereal", "A box of Corn Flakes", "cornflakes.png",true, 0, 0);
+    public static final Item CARD = new Item("Matriculation Card","Tamzid's, the victim, matriculation card. It has a slight blood splatter on the left. ","assets/card.png",true,165,275);
     protected String name;
     protected String description;
     protected boolean canPick;

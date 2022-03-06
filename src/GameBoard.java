@@ -31,9 +31,12 @@ public class GameBoard extends JPanel implements ActionListener {
         player = new PlayerMoveable(this);
 
 
-        Rooms.LABS.setDoors(new Door[]{new Door(1100, 0, 0,720, null), new Door(0, 720, 600,0, Rooms.KITCHEN)});
-        Rooms.KITCHEN.setDoors(new Door[]{new Door(650, 0,0, 720, Rooms.LABS)});
-        this.room = Rooms.LABS;
+        Rooms.LABS.setDoors(new Door[]{new Door(1100, 0, 680,490, Rooms.UPPER_HALL), new Door(0, 720, 750,490, Rooms.KITCHEN)});
+        Rooms.KITCHEN.setDoors(new Door[]{new Door(740, 0,0, 720, Rooms.LABS), new Door(1050,0,0,0,null),
+        new Door(0,50,0,0,null), new Door(1120,700,600,790,Rooms.VERTICAL_HALL)});
+        Rooms.UPPER_HALL.setDoors(new Door[]{new Door(680,490,1100,0, Rooms.LABS), new Door(0,264,0,0,null), new Door(1150, 260,400,40,Rooms.VERTICAL_HALL)});
+        Rooms.VERTICAL_HALL.setDoors(new Door[]{new Door(400,40,1100,260,Rooms.UPPER_HALL), new Door(690,160,0,0,null), new Door(600,790,1120,700,Rooms.KITCHEN)});
+        this.room = Rooms.VERTICAL_HALL;
 
         room.roomDesc(Main.box);
 

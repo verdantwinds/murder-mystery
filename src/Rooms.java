@@ -3,6 +3,7 @@ public class Rooms {
 
 
 
+
 //    public static final Room PARK = new Room("Park","A lovely park","assets/park.png",
 //            new Suspect[]{Suspect.JON}, new Item[]{Item.knife}, new IWorldObject[]{}, null);
 //    public static final Room BEACH = new Room("Beach","A sandy beach","assets/beach.png",
@@ -50,6 +51,11 @@ public class Rooms {
             new Item[]{Weapon.KNIFE, Weapon.PLASTIC_BAG}, new IWorldObject[] {kitchenTop,
             kitchenCounter, kitchenSofa, tableOne, tableTwo, tableThree, bigTable, kitchenWall,
             kitchenTopBar});
+
+    public static final Room UPPER_HALL = new Room("Upper hallway","The hallway that leads to other hallways, and the labs.",
+            "assets/upper_hall.png", null, new Item[]{Item.CARD}, null);
+    public static final Room VERTICAL_HALL = new Room("Vertical hallway","The hallway that connects you to the kitchen, Jon's office and another hallway.",
+            "assets/vertical_hall.png",null,null,null);
 
 
 }
