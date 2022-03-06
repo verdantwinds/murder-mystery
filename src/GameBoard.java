@@ -19,6 +19,7 @@ public class GameBoard extends JPanel implements ActionListener {
     private ArrayList<Door> doors;
     private Room room;
     private static final boolean DISPLAY_HITBOXES = false;
+    private boolean focus = false;
     private Main main;
     public GameBoard(Main main) {
         this.main = main;
@@ -123,7 +124,10 @@ public class GameBoard extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        requestFocus();
+        if(!focus) {
+            requestFocus();
+            focus = true;
+        }
         player.move();
         repaint();
         if(player.checkWin()) {
