@@ -28,6 +28,7 @@ public class PlayerMoveable implements IWorldObject {
         y = 300;
         inventory = new ArrayList<>();
         this.board = board;
+
     }
 
 
@@ -54,6 +55,10 @@ public class PlayerMoveable implements IWorldObject {
 
     public Image getImage() {
         return image;
+    }
+
+    public boolean getAccuse() {
+        return accuse;
     }
 
     public void interact() {

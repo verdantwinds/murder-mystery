@@ -15,7 +15,7 @@ public class GuiDialogueBox extends JPanel {
     public GuiDialogueBox () {
         super();
 
-        String img = "./assets/DialogueBoxSimple.png";
+        String img = "../assets/DialogueBoxSimple.png";
         ImageIcon icon = new ImageIcon(img);
         Image image = icon.getImage(); // transform it
         Image newimg = image.getScaledInstance(1200, 116,  java.awt.Image.SCALE_SMOOTH); // scale it

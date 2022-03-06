@@ -1,20 +1,35 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Main extends JFrame {
 
     public static GuiDialogueBox box;
     private JPanel main;
-
+    private Audio audio;
 
     public Main() {
 //        JPanel main = new JPanel(new GridBagLayout());
 //        main.setBackground(Color.gray);
 //
         setSize(1200, 1000);
+
+        try {
+            audio = new Audio();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
+
         startScreen();
+        ImageIcon ii = new ImageIcon("../assets/test.png");
+        setIconImage(ii.getImage());
 //        add(new GameBoard());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -22,6 +37,10 @@ public class Main extends JFrame {
         setTitle("Sherlock Bones: The Jack Cole Mystery");
         setResizable(false);
         setVisible(true);
+    }
+
+    public Audio getAudio() {
+        return audio;
     }
 
     public void mainPanel() {
@@ -55,7 +74,7 @@ public class Main extends JFrame {
     }
 
     public void startScreen() {
-        ImageIcon ii = new ImageIcon("assets/start.png");
+        ImageIcon ii = new ImageIcon("../assets/start.png");
 
         JPanel startP = new JPanel();
         startP.setBackground(Color.decode("#951f1f"));
@@ -81,7 +100,7 @@ public class Main extends JFrame {
     }
 
     public void winScreen() {
-        ImageIcon ii = new ImageIcon("assets/win.png");
+        ImageIcon ii = new ImageIcon("../assets/win.png");
         remove(main);
         JPanel winP = new JPanel();
         JLabel win = new JLabel(ii);

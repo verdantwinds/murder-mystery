@@ -7,6 +7,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 
 public class GameBoard extends JPanel implements ActionListener {
@@ -127,6 +128,19 @@ public class GameBoard extends JPanel implements ActionListener {
         repaint();
         if(player.checkWin()) {
             main.winScreen();
+        }
+        if(player.getAccuse()) {
+            try {
+                main.getAudio().playAudio(new File("../Audio/sus.wav"));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            try {
+                main.getAudio().playAudio(new File("../Audio/pixel.wav"));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
