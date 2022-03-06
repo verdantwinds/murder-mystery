@@ -13,9 +13,9 @@ public class GameBoard extends JPanel implements ActionListener {
     static final Border COMPOUND_BORDER = BorderFactory.createCompoundBorder(BORDER,BorderFactory.createRaisedBevelBorder());
     private Timer timer;
     private PlayerMoveable player;
-
+    private ArrayList<Door> doors;
     private Room room;
-    private static final boolean DISPLAY_HITBOXES = false;
+    private static final boolean DISPLAY_HITBOXES = true;
 
     public GameBoard() {
         setBorder(COMPOUND_BORDER);
@@ -29,9 +29,10 @@ public class GameBoard extends JPanel implements ActionListener {
 
 
 
-        this.room = Room.LABS;
+        this.room = Rooms.LABS;
 
         room.roomDesc(Test.box);
+        doors.add(new Door(1100,0, Rooms.BEACH));
 
 
         timer = new Timer(5, this);
@@ -57,12 +58,7 @@ public class GameBoard extends JPanel implements ActionListener {
         if(room.getSuspects() != null) {
             for (Suspect s : room.getSuspects()) {
                 g2d.drawImage(s.getImage(), s.getX(), s.getY(), this);
-
-                if (DISPLAY_HITBOXES) {
-                    int[] midpoint = Collision.getMidpoint(s);
-                    g2d.drawRect(midpoint[0] - 2, midpoint[1] - 2, 4, 4);
-                    g2d.drawRect(s.getX(), s.getY(), s.getSize()[0], s.getSize()[1]);
-                }
+                drawHitbox(g2d, s);
 
             }
         }
@@ -79,13 +75,14 @@ public class GameBoard extends JPanel implements ActionListener {
 //            }
 //        }
 
+        for (IWorldObject o : room.getObjects()) {
+            drawHitbox(g2d, o);
+        }
+
         g2d.drawImage(player.getImage(), player.getX(), player.getY(), this);
 
-        if (DISPLAY_HITBOXES) {
-            int[] midpoint = Collision.getMidpoint(player);
-            g2d.drawRect(midpoint[0] - 2, midpoint[1] - 2, 4, 4);
-            g2d.drawRect(player.getX(), player.getY(), player.getSize()[0], player.getSize()[1]);
-        }
+        drawHitbox(g2d, player);
+
 
 
         Toolkit.getDefaultToolkit().sync();
@@ -107,6 +104,18 @@ public class GameBoard extends JPanel implements ActionListener {
         public void keyPressed(KeyEvent e) {
             player.keyPressed(e);
         }
+    }
+
+    private static void drawHitbox (Graphics2D g, IWorldObject obj) {
+        if (DISPLAY_HITBOXES) {
+            int[] midpoint = Collision.getMidpoint(obj);
+
+            g.setColor(Color.RED);
+            g.drawRect(midpoint[0] - 2, midpoint[1] - 2, 4, 4);
+            g.drawRect(obj.getPosition()[0], obj.getPosition()[1], obj.getSize()[0],
+                    obj.getSize()[1]);
+        }
+
     }
 
 }

@@ -21,7 +21,7 @@ public class PlayerMoveable implements IWorldObject {
     public PlayerMoveable(GameBoard board) {
         ImageIcon ii = new ImageIcon("assets/test.png");
         image = ii.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
-        x = 40;
+        x = 20;
         y = 60;
         inventory = new ArrayList<>();
         this.board = board;
@@ -130,6 +130,63 @@ public class PlayerMoveable implements IWorldObject {
         Test.box.enterText(invText);
     }
 
+    public void questionOne() {
+        if(board.getRoom().getSuspects() != null) {
+            for (Suspect s : board.getRoom().getSuspects()) {
+                if (x >= s.getX() - 100 && x <= s.getX() + 100) {
+                    if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+
+                        return;
+
+                    }
+                }
+            }
+        }
+    }
+
+    public void questionTwo() {
+        if(board.getRoom().getSuspects() != null) {
+            for (Suspect s : board.getRoom().getSuspects()) {
+                if (x >= s.getX() - 100 && x <= s.getX() + 100) {
+                    if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+
+                        return;
+
+                    }
+                }
+            }
+        }
+    }
+
+    public void questionThree() {
+        if(board.getRoom().getSuspects() != null) {
+            for (Suspect s : board.getRoom().getSuspects()) {
+                if (x >= s.getX() - 100 && x <= s.getX() + 100) {
+                    if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+
+                        return;
+
+                    }
+                }
+            }
+        }
+    }
+
+    public void questionFour() {
+
+        if(inventory.contains(Item.cereal) && board.getRoom().getSuspects() != null) {
+            for (Suspect s : board.getRoom().getSuspects()) {
+                if (x >= s.getX() - 100 && x <= s.getX() + 100) {
+                    if (y >= s.getY() - 100 && y <= s.getY() + 100) {
+
+                        return;
+
+                    }
+                }
+            }
+        }
+    }
+
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
@@ -160,6 +217,22 @@ public class PlayerMoveable implements IWorldObject {
 
         if(key == KeyEvent.VK_I) {
             checkInventory();
+        }
+
+        if(key == KeyEvent.VK_1) {
+            questionOne();
+        }
+
+        if(key == KeyEvent.VK_2) {
+            questionTwo();
+        }
+
+        if(key == KeyEvent.VK_3) {
+            questionThree();
+        }
+
+        if(key == KeyEvent.VK_4) {
+            questionFour();
         }
     }
 
