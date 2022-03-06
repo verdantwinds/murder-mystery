@@ -1,3 +1,6 @@
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 /**
  * Collision utils
  */
@@ -22,13 +25,11 @@ public class Collision {
 
     }
 
-    private static int calcDistance (int xOne, int yOne, int xTwo, int yTwo) {
-        return (int) Math.floor(Math.sqrt((yTwo - yOne) * (yTwo - yOne) + (xTwo - xOne) * (xTwo - xOne)));
-    }
 
     public static int[] getMidpoint (IWorldObject obj) {
         int midpointX = obj.getPosition()[0] + (obj.getSize()[0] / 2);
         int midpointY = obj.getPosition()[1] + (obj.getSize()[1] / 2);
         return new int[]{midpointX, midpointY};
     }
+
 }
