@@ -141,7 +141,7 @@ public class GameBoard extends JPanel implements ActionListener {
             }
         } else {
             try {
-                main.getAudio().playAudio(new File("Audio/mystery.wav"));
+                main.getAudio().playAudio(new File("../Audio/mystery.wav"));
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

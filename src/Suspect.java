@@ -23,25 +23,25 @@ public class Suspect extends Person {
     public void startDialogue(GuiDialogueBox box){
         switch (name){
             case "Jon Lewis":
-                box.enterText("Jon Lewis: oooooooooggggh my name is jon lewis i love the weather");
+                box.enterText("It's Jon.");
                 break;
             case "Özgür Akgün":
-                box.enterText("Özgür Akgün: wagwan i am oz ");
+                box.enterText("It's Oz.");
                 break;
             case "Ruth Hoffmann":
-                box.enterText("Ruth Hoffmann: hi, it's ruth");
+                box.enterText("It's Ruth.");
                 break;
             case "Tristan Henderson":
-                box.enterText("Tristan Henderson: i'm tristan and windows suckz");
+                box.enterText("It's Tristan.");
                 break;
             case "Saleem Bhatti":
-                box.enterText("Saleem Bhatti: it's papa saleem! ");
+                box.enterText("It's Saleem.");
                 break;
             case "Ian Gent":
-                box.enterText("Ian Gent: yo yo yo it's ian");
+                box.enterText("It's Ian.");
                 break;
             case "Edwin Brady":
-                box.enterText("Edwin Brady: i'm edwin - haskell4thewin");
+                box.enterText("It's Edwin.");
                 break;
         }
 
